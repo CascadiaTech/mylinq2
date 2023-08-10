@@ -58,7 +58,7 @@ export default function HeaderComponent() {
               <li className={"invisible md:visible text-right justify-right px-3 content-right"}>
                 {" "}
                 <a onClick={() => window.open("")}>
-                  <p className="text-xl font-bold cursor-pointer block self-center mt-2 pr-40 mr-40 pl-3 text-blue-400 md:bg-transparent md:p-0">
+                  <p style={{fontFamily: 'Azonix'}} className="text-xl font-bold cursor-pointer block self-center mt-2 pr-40 mr-40 pl-3 text-blue-400 md:bg-transparent md:p-0">
                     LINQ{" "}
                   </p>
                 </a>
@@ -89,18 +89,18 @@ export default function HeaderComponent() {
                       style={{ fontFamily: "Mandalore", backgroundColor: "#171717" }}
                       className="text-xl text-white rounded-xl px-2 py-2"
                     >
-                      <li className="pt-1 hover:border-b-4 border-pink-500">
+                      <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"/"}>Dashboard</Link>
                       </li>
-                      <li className="pt-2 hover:border-b-4 border-purple-500">
-                        <Link href="/Token/TokenPage">Buy LINQ</Link>
+                      <li className="pt-1 hover:border-b-2 border-gray-300">
+                        <Link href={"https://linktr.ee/linqgroup"}>Link Tree</Link>
                       </li>
                       <li>
                         <a
                           onClick={() =>
                             window.open("https://www.linqgroup.io/")
                           }
-                          className=" cursor-pointer block px-4 pt-2 hover:border-b-4 border-pink-500"
+                          className=" cursor-pointer block px-4 pt-2 hover:border-b-2 border-gray-300"
                         >
                           Website
                         </a>
