@@ -277,6 +277,7 @@ const Home: NextPage = () => {
           {" "}
           <HeaderComponent></HeaderComponent>
         </header>
+        <h1>LINQ</h1>
         <video
           className="min-w-full z-0 h-120% absolute object-cover"
           playsInline
