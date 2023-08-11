@@ -158,11 +158,11 @@ export default function ClaimComponent() {
       <div className="flex flex-col w-fit">
         <h5
           style={{ fontFamily: "Azonix" }}
-          className="text-center mb-2 text-4xl font-bold tracking-tight self-center text-gray-300 dark:text-gray-300"
+          className="text-center mb-2 text-4xl font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
         >
           Claim LP Rewards
         </h5>
-        <div className="md:grid grid-cols-2 flex flex-col border-2 border-gray-500 rounded-xl">
+        <div className="md:grid grid-cols-2 mx-4 flex flex-col border-2 border-gray-500 rounded-xl">
           <div className={"rounded-xl text-black text-xl px-4 py-2 m-3"}>
             <p style={{fontFamily: 'GroupeMedium'}} className={"text-xl font-bold text-gray-300"}>
               Pending LP Rewards:

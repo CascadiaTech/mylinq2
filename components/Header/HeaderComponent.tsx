@@ -58,7 +58,7 @@ export default function HeaderComponent() {
               <li className={"invisible md:visible text-right justify-right px-3 content-right"}>
                 {" "}
                 <a onClick={() => window.open("")}>
-                  <p style={{fontFamily: 'Azonix'}} className="text-xl font-bold cursor-pointer block self-center mt-2 pr-40 mr-40 pl-3 text-blue-400 md:bg-transparent md:p-0">
+                  <p style={{fontFamily: 'Azonix'}} className="text-xl font-bold tracking-wide cursor-pointer block self-center mt-2 pr-40 mr-40 pl-3 text-blue-400 md:bg-transparent md:p-0">
                     LINQ{" "}
                   </p>
                 </a>
@@ -67,7 +67,7 @@ export default function HeaderComponent() {
               
               <ul
                 className={
-                 'text-xl flex flex-row text-center -translate-x-6 z-30 absolute mt-14 sm:mt-5 top-0 right-0 overflow-hidden rounded-lg'}
+                 'text-xl flex flex-row text-center -translate-x-2 z-30 absolute mt-14 sm:mt-5 top-0 right-0 overflow-hidden rounded-lg'}
               >
                 <div className="flex transition-all flex-col items-center ">
                   <div

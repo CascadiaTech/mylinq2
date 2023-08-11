@@ -39,25 +39,23 @@ const Home: NextPage = () => {
   const { library } = context;
   const [isended, setisended] = useState(false);
   const [uniswaprovider, setuniswapprivder] = useState();
-  
+
   const videoRefMobile = useRef(null);
   const videoRefNonMobile = useRef(null);
   const [isMobile, setIsMobile] = useState(Boolean);
-  const attemptPlay = (videoRef:any) => {
-    videoRef &&
-      videoRef.current &&
-      videoRef.current.defaultMuted == false;
+  const attemptPlay = (videoRef: any) => {
+    videoRef && videoRef.current && videoRef.current.defaultMuted == false;
     videoRef.current.load() &&
-      videoRef.current.play().catch((error:any) => {
+      videoRef.current.play().catch((error: any) => {
         console.log("error attempting to play", error);
       });
   };
-  
+
   useEffect(() => {
     const videoRef = isMobile ? videoRefMobile : videoRefNonMobile;
     attemptPlay(videoRef);
   }, [isMobile]);
-  
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 800);
 
@@ -67,7 +65,7 @@ const Home: NextPage = () => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-  console.log(isMobile)
+  console.log(isMobile);
 
   useEffect(() => {
     async function setProvider() {
@@ -307,46 +305,54 @@ const Home: NextPage = () => {
           {" "}
           <HeaderComponent></HeaderComponent>
         </header>
-      
         {isMobile ? (
-        <video
-          ref={videoRefMobile}
-          className="min-w-full z-0 min-h-full relative object-cover visible md:invisible"
-          playsInline
-          autoPlay
-          loop
-          muted
+          <video
+            ref={videoRefMobile}
+            className="min-w-full z-0 min-h-full relative object-cover visible md:invisible"
+            playsInline
+            autoPlay
+            loop
+            muted
+          >
+            <source src="/LinqVidMobile.mp4" type="video/mp4" />
+            Your browser does not support the video tag, update your browser
+          </video>
+        ) : (
+          <>
+            <video
+              ref={videoRefNonMobile}
+              className="min-w-full z-0 min-h-full relative object-cover invisible md:visible"
+              playsInline
+              autoPlay
+              loop
+              muted
+            >
+              <source src="/LinqVid.mp4" type="video/mp4" />
+              Your browser does not support the video tag, update your browser
+            </video>
+          </>
+        )}
+        <div
+          className={"flex flex-col absolute z-10 mx-auto justify-center"}
+        ></div>
+        <div
+          className={
+            "absolute z-10 my-20 flex flex-col justify-center lg:flex-row"
+          }
         >
-          <source src="/LinqVidMobile.mp4" type="video/mp4" />
-          Your browser does not support the video tag, update your browser
-        </video>
-      ) : (
-        <video
-          ref={videoRefNonMobile}
-          className="min-w-full z-0 min-h-full relative object-cover invisible md:visible"
-          playsInline
-          autoPlay
-          loop
-          muted
-        >
-          <source src="/LinqVid.mp4" type="video/mp4" />
-          Your browser does not support the video tag, update your browser
-        </video>
-      )}
-        <div className={"absolute z-10 flex flex-col justify-center lg:flex-row"}>
           <div
-            className={`mx-5 w-fit justify-center mx-auto text-center`}
+            className={`mx-5 w-fit px-4 justify-center mx-auto text-center`}
             style={{ fontFamily: "Mandalore" }}
           >
             <iframe
-              className={'rounded-xl'}
+              className={"rounded-xl"}
               width="400"
               height="720"
               allow="clipboard-read *; clipboard-write *; web-share *; accelerometer *; autoplay *; camera *; gyroscope *; payment *; geolocation *"
               src="https://flooz.xyz/embed/trade?swapDisabled=false&swapToTokenAddress=0x3e34eabF5858a126cb583107E643080cEE20cA64&swapLockToToken=true&onRampDisabled=false&onRampAsDefault=false&onRampDefaultAmount=10000&onRampTokenAddress=0x3e34eabF5858a126cb583107E643080cEE20cA64&onRampLockToken=true&stakeDisabled=true&network=eth&lightMode=false&primaryColor=%23463b72&backgroundColor=transparent&roundedCorners=10&padding=20&refId=4itSAj"
             ></iframe>
           </div>
-
+          <p className={"my-5"}></p>
           <div className={`mx-5 text-center self-center justify-center`}>
             <ClaimComponent></ClaimComponent>
           </div>
