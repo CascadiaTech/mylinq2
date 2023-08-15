@@ -4,7 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 //import Image from "next/image";
 import Link from "next/link";
 import Image from "next/image";
-import LinqLogo from "../../assets/images/LinqLogo.png"
+import LinqLogo from "../../assets/images/LinqLogo.png";
+import LINQLOGOTXT from "../../assets/images/LINQLOGOTXT.png";
 import { ConnectWallet } from "../Web3Modal/WalletConnect";
 import { Dropdown } from "flowbite-react";
 import { useRouter } from "next/router";
@@ -51,17 +52,10 @@ export default function HeaderComponent() {
             id="navbar-sticky"
           >
             <ul className="h-auto flex flex-row justify-left self-center sm:my-0 text-left items-left p-4 mt-4 rounded-lg md:space-x-8 md:mt-0 md:text-md ">
-              <div className={'invisible sm:visible flex flex-row top-0 left-0 absolute mt-4 px-4'}>
-              <li>
-                <Image width={50} height={50} src={LinqLogo} alt="asa"></Image>
-              </li>
-              <li className={"invisible md:visible text-right justify-right px-3 content-right"}>
+              <div className={'invisible sm:visible flex flex-row top-0 left-0 absolute self-center mt-4 px-4'}>
+              <li className={"invisible md:visible self-center mt-2"}>
                 {" "}
-                <a onClick={() => window.open("")}>
-                  <p style={{fontFamily: 'Azonix'}} className="text-xl font-bold tracking-wide cursor-pointer block self-center mt-2 pr-40 mr-40 pl-3 text-blue-400 md:bg-transparent md:p-0">
-                    LINQ{" "}
-                  </p>
-                </a>
+                <Image className={'self-center'} width={75} height={37.5} src={LINQLOGOTXT} alt="asa"></Image>
               </li>
               </div>
               
@@ -91,6 +85,9 @@ export default function HeaderComponent() {
                     >
                       <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"/"}>Dashboard</Link>
+                      </li>
+                      <li className="pt-1 hover:border-b-2 border-gray-300">
+                        <Link href={"/Dapp/NFTMintPage"}>Claim</Link>
                       </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"https://linktr.ee/linqgroup"}>Link Tree</Link>

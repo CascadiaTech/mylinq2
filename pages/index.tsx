@@ -29,6 +29,7 @@ import { abiObject } from "../contracts/abi/abi.mjs";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { SwapWidget, Theme, darkTheme } from "@uniswap/widgets";
+import StakeComponent from "../components/Stake/StakeComponent";
 const Home: NextPage = () => {
   const { account, chainId, active } = useWeb3React();
   const showConnectAWallet = Boolean(!account);
