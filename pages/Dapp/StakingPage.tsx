@@ -37,6 +37,7 @@ export default function StakeComponent() {
   const [pendingreflections, setpendingreflections] = useState(Number);
   const [totaldistributed, settotaldistributed] = useState(Number);
   const [balance, setbalance] = useState(Number);
+  const [balanceinstaking, setbalanceInstaking] = useState(Number)
 
   const videoRefMobile = useRef(null);
   const videoRefNonMobile = useRef(null);
@@ -89,7 +90,31 @@ export default function StakeComponent() {
         setLoading(false);
       }
     }
+
+    async function getamount() {
+      try {
+        setLoading(true);
+        const abi = stakingabiObject;
+        const provider = new Web3Provider(
+          library?.provider as ExternalProvider | JsonRpcFetchFunc
+        );
+        const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"; // "clienttokenaddress"
+        const contract = new Contract(contractaddress, abi, provider);
+        const Reflections = await contract.stake_details("0x8E0c7F63152a335C7D7e74C06C59Fb34542564f2")[0]
+         let test = Web3.utils.fromWei(Reflections.toString());
+        setbalanceInstaking(test);
+        console.log(test);
+
+        return Reflections
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    }
     getPendingRewards();
+    getamount();
   }, [account]);
 
   const Claim = useCallback(async () => {
@@ -139,6 +164,14 @@ export default function StakeComponent() {
       if (!provider.getSigner) {
         throw new Error("Provider does not have a valid signer.");
       }
+
+      if(balanceinstaking > 0){
+        Swal.fire({
+          icon: "warning",
+          title: "Claim before you deposit",
+        });
+      }
+      
       const signer = provider.getSigner();
       const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
@@ -387,17 +420,7 @@ export default function StakeComponent() {
                 Claim
               </button>
             </div>
-            <p
-              onClick={() => EmergencyWithdraw()}
-              style={{
-                fontFamily: "GroupeMedium",
-              }}
-              className={
-                "text-xl rounded-2xl cursor-normal text-center bg-gray-300 font-bold text-gray-800 py-2"
-              }
-            >
-              Emergency Withdraw
-            </p>
+ 
           </div>
         </div>
       </main>
