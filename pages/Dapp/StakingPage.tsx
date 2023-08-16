@@ -285,7 +285,7 @@ export default function StakeComponent() {
         <div className="flex flex-col w-fit absolute top-0 mt-40 z-10">
           <h5
             style={{ fontFamily: "Azonix" }}
-            className="text-center mb-2 text-4xl font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
+            className="text-center mb-10 text-4xl font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
           >
             LP Staking Station
           </h5>

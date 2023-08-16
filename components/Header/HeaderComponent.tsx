@@ -87,7 +87,7 @@ export default function HeaderComponent() {
                         <Link href={"/"}>Dashboard</Link>
                       </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300">
-                        <Link href={"/Dapp/NFTMintPage"}>Claim</Link>
+                        <Link href={"/Dapp/StakingPage"}>Claim</Link>
                       </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"https://linktr.ee/linqgroup"}>Link Tree</Link>
