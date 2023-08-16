@@ -37,7 +37,7 @@ export default function StakeComponent() {
   const [pendingreflections, setpendingreflections] = useState(Number);
   const [totaldistributed, settotaldistributed] = useState(Number);
   const [balance, setbalance] = useState(Number);
-  const [balanceinstaking, setbalanceInstaking] = useState(Number)
+  const [balanceinstaking, setbalanceInstaking] = useState(Number);
 
   const videoRefMobile = useRef(null);
   const videoRefNonMobile = useRef(null);
@@ -100,12 +100,24 @@ export default function StakeComponent() {
         );
         const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"; // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider);
-        const Reflections = await contract.stake_details("0x8E0c7F63152a335C7D7e74C06C59Fb34542564f2")[0]
-         let test = Web3.utils.fromWei(Reflections.toString());
-        setbalanceInstaking(test);
-        console.log(test);
+        const Reflections = await contract.stake_details(
+          account
+        );
+        console.log(await contract.stake_details(account));
+        console.log(Reflections.amount);
+        console.log(Reflections[1]);
 
-        return Reflections
+        const numericValue = Web3.utils
+          .toBN(Reflections.amount._hex)
+          .toString();
+        console.log(numericValue);
+
+        const convertedValue = Web3.utils.fromWei(numericValue, "ether");
+        console.log(convertedValue);
+
+        setbalanceInstaking(convertedValue);
+
+        return Reflections;
       } catch (error) {
         console.log(error);
         setLoading(false);
@@ -153,6 +165,44 @@ export default function StakeComponent() {
     }
   }, [account, library?.provider]);
 
+  async function Deposit() {
+    Swal.fire({
+      icon: "warning",
+      title:
+        "You are about to lock your Linq LP token for 2 weeks, are you sure?",
+      showCancelButton: true,
+      confirmButtonText: "Deposit",
+      cancelButtonText: "Cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (balanceinstaking > 0) {
+    
+          Swal.fire({
+            icon: "warning",
+            title: "Claim before you deposit",
+            showCancelButton: true,
+            confirmButtonText: "Claim",
+            cancelButtonText: "Cancel",
+            preConfirm: () => {
+              // Call your custom function here
+              return Claim();
+            },
+            allowOutsideClick: () => !Swal.isLoading(), // Prevent clicking outside the alert while loading
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Handle confirmed action if needed
+            }
+          });
+        }
+        // Handle button click
+        DepositLP();
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        // Handle cancel button click
+        console.log("Cancel button clicked");
+      }
+    });
+  }
+
   async function DepositLP() {
     try {
       setLoading(true);
@@ -165,13 +215,6 @@ export default function StakeComponent() {
         throw new Error("Provider does not have a valid signer.");
       }
 
-      if(balanceinstaking > 0){
-        Swal.fire({
-          icon: "warning",
-          title: "Claim before you deposit",
-        });
-      }
-      
       const signer = provider.getSigner();
       const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
@@ -187,7 +230,7 @@ export default function StakeComponent() {
       setLoading(false);
     }
   }
-// This goes in depositLP to check if they have been approved yet, Error Handling.
+  // This goes in depositLP to check if they have been approved yet, Error Handling.
   //const pairaddress = "0x9d3613eC2af3ECBf90AC27822eA3bfC8E63e83f2";
   //const pair = new Contract(pairaddress, pairaddressabiObject, signer);
   //const allowance = await pair.allowance(account, pairaddress);
@@ -340,9 +383,18 @@ export default function StakeComponent() {
             >
               Locking Period: Approximately two weeks
             </p>
+            <p
+              style={{ fontFamily: "GroupeMedium" }}
+              className={"text-xl text-center font-bold text-gray-300 my-2"}
+            >
+              Important: Claim pending rewards before <br /> adding to stake, or
+              withdrawing from stake.
+            </p>
             <input
               style={{ backgroundColor: "#4a4a4a" }}
-              className={"border-2 justify-center mx-auto border-gray-300 w-fit rounded-2xl px-4 py-2 my-2"}
+              className={
+                "border-2 justify-center mx-auto border-gray-300 w-fit rounded-2xl px-4 py-2 my-2"
+              }
               type="number"
               placeholder="Enter stake amount"
               value={amount}
@@ -364,7 +416,7 @@ export default function StakeComponent() {
                 </p>
               </button>
               <button
-                onClick={() => DepositLP()}
+                onClick={() => Deposit()}
                 style={{ backgroundColor: "#191919" }}
                 className={
                   "rounded-xl hover:text-white text-gray-400 text-xl px-4 py-2 m-3"
@@ -408,7 +460,7 @@ export default function StakeComponent() {
                 {pendingReturns}
               </p>
               <button
-              onClick={() => Claim()}
+                onClick={() => Claim()}
                 style={{
                   fontFamily: "GroupeMedium",
                   backgroundColor: "#191919",
@@ -420,7 +472,6 @@ export default function StakeComponent() {
                 Claim
               </button>
             </div>
- 
           </div>
         </div>
       </main>
