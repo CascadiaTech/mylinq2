@@ -249,48 +249,6 @@ const Home: NextPage = () => {
     }
   };
 
-  const Burntoken = useCallback(async () => {
-    if (!account) {
-      Swal.fire({
-        icon: "error",
-        title: "Connect Your Wallet To Burn",
-        timer: 5000,
-      });
-    }
-
-    try {
-      setLoading(true);
-      const data = abiObject;
-      const abi = data;
-      const contractaddress = "0x552754cBd16264C5141cB5fdAF34246553a10C49"; // "clienttokenaddress"
-      const provider = new Web3Provider(
-        library?.provider as ExternalProvider | JsonRpcFetchFunc
-      );
-      //const provider = getDefaultProvider()
-      const signer = provider.getSigner();
-      const contract = new Contract(contractaddress, abi, signer);
-      console.log(contract);
-      const finalburn = ethers.utils.parseUnits(burnamount.toString(), 18);
-      const BurnTokens = await contract.burn(finalburn); //.burn()
-      const signtransaction = await signer.signTransaction(BurnTokens);
-      const FinalBurn = Number(signtransaction);
-      //const StringFinalBurn = FinalBurn
-      Swal.fire({
-        icon: "success",
-        title: "Congratulations you have Burned all of your tokens",
-        text: "We shall see you next time when you wish to burn more!",
-      });
-      return FinalBurn;
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  }, [account, library?.provider, burnamount]);
-
-  function RenderButtons() {
-    setisended(true);
-  }
 
   // <div className={"mb-10 sm:mb-10 md:mb-10 lg:mb-10 xl:mb-0 flex flex-col"}>
   // <Image
