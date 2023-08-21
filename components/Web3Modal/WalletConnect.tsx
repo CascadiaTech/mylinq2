@@ -75,7 +75,7 @@ export const ConnectWallet = () => {
          <button
          type="button"
          onClick={onActiveClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
        >
          <p
            className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
@@ -89,7 +89,7 @@ export const ConnectWallet = () => {
         <button
          type="button"
          onClick={OnClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
        >
          <p
            className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"

@@ -7,6 +7,13 @@ import Image from "next/image";
 import LinqLogo from "../../assets/images/LinqLogo.png";
 import LINQLOGOTXT from "../../assets/images/LINQLOGOTXT.png";
 import { ConnectWallet } from "../Web3Modal/WalletConnect";
+import { Web3Button } from '@web3modal/react'
+import { Web3Modal } from "@web3modal/react";
+import { EthereumClient, w3mConnectors, w3mProvider } from "@web3modal/ethereum";
+import { Web3Provider } from "@ethersproject/providers";
+import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { arbitrum, mainnet, polygon } from 'wagmi/chains';
+
 import { Dropdown } from "flowbite-react";
 import { useRouter } from "next/router";
 export default function HeaderComponent() {
@@ -26,6 +33,10 @@ export default function HeaderComponent() {
       setHidden({ hidden: 0, rotate: 0 });
     }
   }
+
+  const chains = [arbitrum, mainnet, polygon]
+const projectId = 'e860804a2106941d3e0efee245ad7d7a';
+
   const router = useRouter();
 
   useEffect(() => {
@@ -43,10 +54,10 @@ export default function HeaderComponent() {
         className="px-2 sm:px-4 py-10 -my-10 sm:my-0 sm:py-2 flex w-full fixed sm:w-full z-20 top-0 left-0 border-b border-gray-300"
       >
         <div className="container flex flex-nowrap justify-left items-center mx-auto">
-          <div className="flex-col mx-auto mt-2 text-center justify-center top-0 center-0">
-            <ConnectWallet></ConnectWallet>
-            <p className={'mx-5 sm:mx-0'}></p>
-          </div>
+        <div className="flex-col mx-auto mt-2 text-center justify-center top-0 center-0">
+        <ConnectWallet></ConnectWallet>
+      <p className={"mx-5 sm:mx-0"}></p>
+    </div>
           <div
             className="justify-left self-center items-left text-left w-full flex h-fit w-auto order-1 md:flex md:h-fit md:w-auto order-1"
             id="navbar-sticky"

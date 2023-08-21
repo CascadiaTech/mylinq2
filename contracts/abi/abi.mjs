@@ -1,7 +1,11 @@
 const abi = JSON.stringify([
   {
     inputs: [
-      { internalType: "address", name: "_developerwallet", type: "address" },
+      {
+        internalType: "address",
+        name: "_developerwallet",
+        type: "address",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -128,8 +132,18 @@ const abi = JSON.stringify([
         name: "lastProcessedIndex",
         type: "uint256",
       },
-      { indexed: true, internalType: "bool", name: "automatic", type: "bool" },
-      { indexed: false, internalType: "uint256", name: "gas", type: "uint256" },
+      {
+        indexed: true,
+        internalType: "bool",
+        name: "automatic",
+        type: "bool",
+      },
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "gas",
+        type: "uint256",
+      },
       {
         indexed: true,
         internalType: "address",
@@ -162,8 +176,18 @@ const abi = JSON.stringify([
   {
     anonymous: false,
     inputs: [
-      { indexed: true, internalType: "address", name: "pair", type: "address" },
-      { indexed: true, internalType: "bool", name: "value", type: "bool" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "pair",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "bool",
+        name: "value",
+        type: "bool",
+      },
     ],
     name: "SetAutomatedMarketMakerPair",
     type: "event",
@@ -171,8 +195,18 @@ const abi = JSON.stringify([
   {
     anonymous: false,
     inputs: [
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
       {
         indexed: false,
         internalType: "uint256",
@@ -184,16 +218,34 @@ const abi = JSON.stringify([
     type: "event",
   },
   {
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
     name: "ManualLiquidityDistribution",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     name: "_isBot",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
@@ -206,35 +258,87 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "owner", type: "address" },
-      { internalType: "address", name: "spender", type: "address" },
+      {
+        internalType: "address",
+        name: "owner",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
     ],
     name: "allowance",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
     ],
     name: "approve",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     name: "automatedMarketMakerPairs",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
     name: "balanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
@@ -242,8 +346,16 @@ const abi = JSON.stringify([
     inputs: [],
     name: "buyTaxes",
     outputs: [
-      { internalType: "uint256", name: "liquidity", type: "uint256" },
-      { internalType: "uint256", name: "dev", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "liquidity",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "dev",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -258,38 +370,82 @@ const abi = JSON.stringify([
   {
     inputs: [],
     name: "claimEnabled",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "decimals",
-    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "subtractedValue", type: "uint256" },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "subtractedValue",
+        type: "uint256",
+      },
     ],
     name: "decreaseAllowance",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
     name: "devWallet",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
     name: "dividendTokenBalanceOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
@@ -308,8 +464,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "bool", name: "value", type: "bool" },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "value",
+        type: "bool",
+      },
     ],
     name: "excludeFromDividends",
     outputs: [],
@@ -318,8 +482,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "bool", name: "excluded", type: "bool" },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "excluded",
+        type: "bool",
+      },
     ],
     name: "excludeFromFees",
     outputs: [],
@@ -328,8 +500,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "bool", name: "excluded", type: "bool" },
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "excluded",
+        type: "bool",
+      },
     ],
     name: "excludeFromMaxWallet",
     outputs: [],
@@ -344,14 +524,40 @@ const abi = JSON.stringify([
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
     name: "getAccountInfo",
     outputs: [
-      { internalType: "address", name: "", type: "address" },
-      { internalType: "uint256", name: "", type: "uint256" },
-      { internalType: "uint256", name: "", type: "uint256" },
-      { internalType: "uint256", name: "", type: "uint256" },
-      { internalType: "uint256", name: "", type: "uint256" },
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -359,66 +565,134 @@ const abi = JSON.stringify([
   {
     inputs: [],
     name: "getTotalDividendsDistributed",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "spender", type: "address" },
-      { internalType: "uint256", name: "addedValue", type: "uint256" },
+      {
+        internalType: "address",
+        name: "spender",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "addedValue",
+        type: "uint256",
+      },
     ],
     name: "increaseAllowance",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
     name: "isExcludedFromFees",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "maxBuyAmount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "maxSellAmount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "maxWallet",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "name",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "owner",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "pair",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
@@ -431,7 +705,11 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "tokenAddress", type: "address" },
+      {
+        internalType: "address",
+        name: "tokenAddress",
+        type: "address",
+      },
     ],
     name: "rescueETH20Tokens",
     outputs: [],
@@ -442,7 +720,11 @@ const abi = JSON.stringify([
     inputs: [],
     name: "router",
     outputs: [
-      { internalType: "contract IUniswapRouter", name: "", type: "address" },
+      {
+        internalType: "contract IUniswapRouter",
+        name: "",
+        type: "address",
+      },
     ],
     stateMutability: "view",
     type: "function",
@@ -451,16 +733,32 @@ const abi = JSON.stringify([
     inputs: [],
     name: "sellTaxes",
     outputs: [
-      { internalType: "uint256", name: "liquidity", type: "uint256" },
-      { internalType: "uint256", name: "dev", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "liquidity",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "dev",
+        type: "uint256",
+      },
     ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "newPair", type: "address" },
-      { internalType: "bool", name: "value", type: "bool" },
+      {
+        internalType: "address",
+        name: "newPair",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "value",
+        type: "bool",
+      },
     ],
     name: "setAutomatedMarketMakerPair",
     outputs: [],
@@ -469,8 +767,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "address", name: "bot", type: "address" },
-      { internalType: "bool", name: "value", type: "bool" },
+      {
+        internalType: "address",
+        name: "bot",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "value",
+        type: "bool",
+      },
     ],
     name: "setBot",
     outputs: [],
@@ -479,8 +785,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "uint256", name: "_liquidity", type: "uint256" },
-      { internalType: "uint256", name: "_dev", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "_liquidity",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_dev",
+        type: "uint256",
+      },
     ],
     name: "setBuyTaxes",
     outputs: [],
@@ -488,21 +802,39 @@ const abi = JSON.stringify([
     type: "function",
   },
   {
-    inputs: [{ internalType: "bool", name: "state", type: "bool" }],
+    inputs: [
+      {
+        internalType: "bool",
+        name: "state",
+        type: "bool",
+      },
+    ],
     name: "setClaimEnabled",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newWallet", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "newWallet",
+        type: "address",
+      },
+    ],
     name: "setDevWallet",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "_lpToken", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "_lpToken",
+        type: "address",
+      },
+    ],
     name: "setLP_Token",
     outputs: [],
     stateMutability: "nonpayable",
@@ -510,8 +842,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "uint256", name: "maxBuy", type: "uint256" },
-      { internalType: "uint256", name: "maxSell", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "maxBuy",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "maxSell",
+        type: "uint256",
+      },
     ],
     name: "setMaxBuyAndSell",
     outputs: [],
@@ -520,8 +860,16 @@ const abi = JSON.stringify([
   },
   {
     inputs: [
-      { internalType: "uint256", name: "_liquidity", type: "uint256" },
-      { internalType: "uint256", name: "_dev", type: "uint256" },
+      {
+        internalType: "uint256",
+        name: "_liquidity",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "_dev",
+        type: "uint256",
+      },
     ],
     name: "setSellTaxes",
     outputs: [],
@@ -529,14 +877,26 @@ const abi = JSON.stringify([
     type: "function",
   },
   {
-    inputs: [{ internalType: "bool", name: "_enabled", type: "bool" }],
+    inputs: [
+      {
+        internalType: "bool",
+        name: "_enabled",
+        type: "bool",
+      },
+    ],
     name: "setSwapEnabled",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "amount", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+    ],
     name: "setSwapTokensAtAmount",
     outputs: [],
     stateMutability: "nonpayable",
@@ -545,48 +905,88 @@ const abi = JSON.stringify([
   {
     inputs: [],
     name: "swapEnabled",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "swapTokensAtAmount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "symbol",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "totalBuyTax",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "totalSellTax",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [],
     name: "totalSupply",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "tokenAddress", type: "address" },
+      {
+        internalType: "address",
+        name: "tokenAddress",
+        type: "address",
+      },
     ],
     name: "trackerRescueETH20Tokens",
     outputs: [],
@@ -596,67 +996,144 @@ const abi = JSON.stringify([
   {
     inputs: [],
     name: "tradingEnabled",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
     ],
     name: "transfer",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [
-      { internalType: "address", name: "from", type: "address" },
-      { internalType: "address", name: "to", type: "address" },
-      { internalType: "uint256", name: "amount", type: "uint256" },
+      {
+        internalType: "address",
+        name: "from",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "to",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
     ],
     name: "transferFrom",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
     name: "transferOwnership",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newAddress", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "newAddress",
+        type: "address",
+      },
+    ],
     name: "updateDividendTracker",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "newNum", type: "uint256" }],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "newNum",
+        type: "uint256",
+      },
+    ],
     name: "updateMaxWalletAmount",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "newRouter", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "newRouter",
+        type: "address",
+      },
+    ],
     name: "updateRouter",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "account", type: "address" }],
+    inputs: [
+      {
+        internalType: "address",
+        name: "account",
+        type: "address",
+      },
+    ],
     name: "withdrawableDividendOf",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     stateMutability: "view",
     type: "function",
   },
-  { stateMutability: "payable", type: "receive" },
+  {
+    stateMutability: "payable",
+    type: "receive",
+  },
 ]);
 
 export const abiObject = JSON.parse(abi);

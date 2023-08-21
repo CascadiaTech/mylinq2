@@ -8,6 +8,7 @@ import FooterComponent from "../components/Footer/FooterComponent";
 import DualCardComponent from "../components/DualCards/DualCardComponent";
 import ScrollpositionAnimation from "../hooks/OnScroll";
 import { useCallback, useEffect, useRef, useState } from "react";
+import linqbackground from "../assets/images/linqBackground.jpg";
 import "@uniswap/widgets/fonts.css";
 import goonsHomepage from "../assets/images/GoonsHomepage.jpg";
 import goonsLogoMobile from "../assets/images/goonsLogoMobile.jpg";
@@ -41,32 +42,32 @@ const Home: NextPage = () => {
   const [isended, setisended] = useState(false);
   const [uniswaprovider, setuniswapprivder] = useState();
 
-  const videoRefMobile = useRef(null);
-  const videoRefNonMobile = useRef(null);
-  const [isMobile, setIsMobile] = useState(Boolean);
-  const attemptPlay = (videoRef: any) => {
-    videoRef && videoRef.current && videoRef.current.defaultMuted == false;
-    videoRef.current.load() &&
-      videoRef.current.play().catch((error: any) => {
-        console.log("error attempting to play", error);
-      });
-  };
-
-  useEffect(() => {
-    const videoRef = isMobile ? videoRefMobile : videoRefNonMobile;
-    attemptPlay(videoRef);
-  }, [isMobile]);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 800);
-
-    handleResize(); // set initial value
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-  console.log(isMobile);
+    //const videoRefMobile = useRef(null);
+    //const videoRefNonMobile = useRef(null);
+    //const [isMobile, setIsMobile] = useState(Boolean);
+    //const attemptPlay = (videoRef: any) => {
+    //  videoRef && videoRef.current && videoRef.current.defaultMuted == false;
+    //  videoRef.current.load() &&
+    //    videoRef.current.play().catch((error: any) => {
+    //      console.log("error attempting to play", error);
+    //    });
+    //};
+  //
+    //useEffect(() => {
+    //  const videoRef = isMobile ? videoRefMobile : videoRefNonMobile;
+    //  attemptPlay(videoRef);
+    //}, [isMobile]);
+  //
+    //useEffect(() => {
+    //  const handleResize = () => setIsMobile(window.innerWidth <= 800);
+  //
+    //  handleResize(); // set initial value
+  //
+    //  window.addEventListener("resize", handleResize);
+  //
+    //  return () => window.removeEventListener("resize", handleResize);
+    //}, []);
+    //console.log(isMobile);
 
   useEffect(() => {
     async function setProvider() {
@@ -217,37 +218,6 @@ const Home: NextPage = () => {
     borderRadius: 0,
     fontFamily: '"Mandalore"',
   };
-  const MY_TOKEN_LIST = [
-    {
-      name: "Cosmic Odyssey",
-      address: "0xb99405b00eF8D0Cf17aEf9D46a8d3cB9f3b72e57",
-      symbol: "COSMIC",
-      decimals: 18,
-      chainId: 1,
-    },
-  ];
-
-  const addTokenToMM = async () => {
-    try {
-      const { ethereum }: any = window;
-      await ethereum.request({
-        method: "wallet_watchAsset",
-        params: {
-          type: "ERC20",
-          options: {
-            address: "0xb99405b00eF8D0Cf17aEf9D46a8d3cB9f3b72e57", // ERC20 token address
-            symbol: `COSMIC`,
-            decimals: 18,
-          },
-        },
-      });
-    } catch (ex) {
-      // We don't handle that error for now
-      // Might be a different wallet than Metmask
-      // or user declined
-      console.error(ex);
-    }
-  };
 
   const Burntoken = useCallback(async () => {
     if (!account) {
@@ -270,7 +240,7 @@ const Home: NextPage = () => {
       const signer = provider.getSigner();
       const contract = new Contract(contractaddress, abi, signer);
       console.log(contract);
-      const finalburn = ethers.utils.parseUnits(burnamount.toString(), 18);
+      const finalburn = ethers.parseUnits(burnamount.toString(), 18);
       const BurnTokens = await contract.burn(finalburn); //.burn()
       const signtransaction = await signer.signTransaction(BurnTokens);
       const FinalBurn = Number(signtransaction);
@@ -306,33 +276,10 @@ const Home: NextPage = () => {
           {" "}
           <HeaderComponent></HeaderComponent>
         </header>
-        {isMobile ? (
-          <video
-            ref={videoRefMobile}
-            className="min-w-full z-0 min-h-full relative object-cover visible md:invisible"
-            playsInline
-            autoPlay
-            loop
-            muted
-          >
-            <source src="/LinqVidMobile.mp4" type="video/mp4" />
-            Your browser does not support the video tag, update your browser
-          </video>
-        ) : (
-          <>
-            <video
-              ref={videoRefNonMobile}
-              className="min-w-full z-0 min-h-full relative object-cover invisible md:visible"
-              playsInline
-              autoPlay
-              loop
-              muted
-            >
-              <source src="/LinqVid.mp4" type="video/mp4" />
-              Your browser does not support the video tag, update your browser
-            </video>
-          </>
-        )}
+        <Image
+          className="z-0 absolute "
+          src={linqbackground}
+        ></Image>
         <div
           className={"flex flex-col absolute z-10 mx-auto justify-center"}
         ></div>

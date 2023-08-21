@@ -46,7 +46,7 @@ a {
   flex-direction: column;
   text-align: center;
 
-}
+}url
 
 .CreateAccount-Card{
 background-color: rgba(34, 34, 34, 0.904);
@@ -797,51 +797,6 @@ button[type=submit]:hover {
           overflow: hidden;
         }
 
-        .divwithimage {
-          background-image: url('../assets/images/house.jpg');
-          background-repeat: no-repeat;
-          background-position: center; 
-          max-width: '400px';
-          height: '400px';
-          max-height: '400px';
-          width: '400px';
-      
-        }
-
-        .divwithcityimage {
-          background-image: url('../assets/images/city.jpeg');
-          background-repeat: no-repeat;
-          background-position: center; 
-          max-width: '400px';
-          height: '400px';
-          max-height: '400px';
-          width: '400px';
-      
-        }
-
-        .divwithhouseimage {
-          background-image: url('../assets/images/houseimage.png');
-          background-repeat: no-repeat;
-          background-position: center; 
-      
-        }
-        .divwithcity2image {
-          background-image: url('../assets/images/city2.jpg');
-          background-repeat: no-repeat;
-          background-position: center; 
-          max-width: '400px';
-          height: '400px';
-          max-height: '400px';
-          width: '400px';
-      
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Asap", sans-serif;
-}
 body{
   background: #42455a;
 }

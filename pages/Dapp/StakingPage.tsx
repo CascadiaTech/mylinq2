@@ -2,7 +2,7 @@ import "tailwindcss-elevation";
 import { useWeb3React } from "@web3-react/core";
 import Swal from "sweetalert2";
 import { Accordion } from "flowbite-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, } from "react";
 import Web3 from "web3";
 import {
   ExternalProvider,
@@ -10,6 +10,9 @@ import {
   Web3Provider,
 } from "@ethersproject/providers";
 import styles from "../../styles/Home.module.css";
+import Image from "next/image";
+import linqbackground from "../../assets/images/linqBackground.jpg";
+import linqbackgroundmobile from "../../assets/images/linqBackgroundMobile.jpg";
 import { Contract } from "@ethersproject/contracts";
 import { stakingabiObject } from "../../contracts/abi/stakingabi.mjs";
 import { pairaddressabiObject } from "../../contracts/abi/pairaddressabi.mjs";
@@ -30,7 +33,7 @@ export default function StakeComponent() {
   const [pendingReturns, setpendingReturns] = useState(Number);
   const [amount, setAmount] = useState<number>(0);
   const [spender, setSpender] = useState(
-    "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"
+    "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7"
   );
   const [value, setValue] = useState(10000000000000);
 
@@ -56,7 +59,7 @@ export default function StakeComponent() {
   }, [isMobile]);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 800);
+    const handleResize = () => setIsMobile(window.innerWidth <= 1050);
 
     handleResize(); // set initial value
 
@@ -74,7 +77,7 @@ export default function StakeComponent() {
         const provider = new Web3Provider(
           library?.provider as ExternalProvider | JsonRpcFetchFunc
         );
-        const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"; // "clienttokenaddress"
+        const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7"; // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider);
         const rewardToken = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
         const Reflections = await contract.getPendingReturns(account);
@@ -98,11 +101,9 @@ export default function StakeComponent() {
         const provider = new Web3Provider(
           library?.provider as ExternalProvider | JsonRpcFetchFunc
         );
-        const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"; // "clienttokenaddress"
+        const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7"; // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider);
-        const Reflections = await contract.stake_details(
-          account
-        );
+        const Reflections = await contract.stake_details(account);
         console.log(await contract.stake_details(account));
         console.log(Reflections.amount);
         console.log(Reflections[1]);
@@ -131,39 +132,71 @@ export default function StakeComponent() {
 
   const Claim = useCallback(async () => {
     if (!account) {
-      Swal.fire({
-        icon: "error",
-        title: "Connect Your Wallet To Claim",
-        timer: 5000,
-      });
+        Swal.fire({
+            icon: "error",
+            title: "Connect Your Wallet To Claim",
+            timer: 5000,
+        });
+        return; // Exit function if account is not connected
     }
 
     try {
-      setLoading(true);
-      const data = stakingabiObject;
-      const abi = data;
-      const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC"; // "clienttokenaddress"
-      const provider = new Web3Provider(
-        library?.provider as ExternalProvider | JsonRpcFetchFunc
-      );
-      const signer = provider.getSigner();
-      const contract = new Contract(contractaddress, abi, signer);
-      console.log(contract);
-      const ClaimTokens = await contract.Claim(); //.claim()
-      const signtransaction = await signer.signTransaction(ClaimTokens);
-      const Claimtxid = await signtransaction;
-      Swal.fire({
-        icon: "success",
-        title: "Congratulations you have Claimed all of your rewards",
-        text: "Go see them in your wallet, and stick around for the next drop",
-      });
-      return Claimtxid;
-    } catch (error) {
-      console.log(error);
+        setLoading(true);
+        const data = stakingabiObject;
+        const abi = data;
+        const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7"; // "clienttokenaddress"
+        const provider = new Web3Provider(
+            library?.provider as ExternalProvider | JsonRpcFetchFunc
+        );
+        const signer = provider.getSigner();
+        const contract = new Contract(contractaddress, abi, signer);
+        console.log(contract);
+        const ClaimTokens = await contract.Claim(); //.claim()
+        const signtransaction = await signer.signTransaction(ClaimTokens);
+        const Claimtxid = await signtransaction;
+        Swal.fire({
+            icon: "success",
+            title: "Congratulations you have Claimed all of your rewards",
+            text: "Go see them in your wallet, and stick around for the next drop",
+        });
+
+        return Claimtxid;
+    } catch (error: any) {
+        if (error.message.includes("rejected")) {
+            Swal.fire({
+                icon: "error",
+                title: "Transaction Rejected",
+                text: "The transaction was rejected.",
+            });
+        } else if (error.message.includes("not recognized as active staker")) {
+            Swal.fire({
+                icon: "error",
+                title: "Claim Failed",
+                text: "You are not recognized as an active staker.",
+            });
+        } 
+        else if (error.message.includes("you must re-lock your LP for another lock duration")) {
+          Swal.fire({
+              icon: "error",
+              title: "Claim Failed",
+              text: "you must re-lock your LP for another lock duration before claiming again :)",
+          });
+      } 
+      else if (error.message.includes("you can only claim once per block")) {
+        Swal.fire({
+            icon: "error",
+            title: "Claim Failed",
+            text: "You can only claim once per block",
+        });
+    } 
+        else {
+            console.log(error);
+        }
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  }, [account, library?.provider]);
+}, [account, library?.provider]);
+
 
   async function Deposit() {
     Swal.fire({
@@ -173,10 +206,9 @@ export default function StakeComponent() {
       showCancelButton: true,
       confirmButtonText: "Deposit",
       cancelButtonText: "Cancel",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         if (balanceinstaking > 0) {
-    
           Swal.fire({
             icon: "warning",
             title: "Claim before you deposit",
@@ -195,10 +227,35 @@ export default function StakeComponent() {
           });
         }
         // Handle button click
-        DepositLP();
+        DepositLP()
+          .then(() => {
+            Swal.fire({
+              icon: "success",
+              title: "Congratulations!",
+              text: "You have successfully deposited your LP tokens!",
+            });
+          })
+          .catch((error) => {
+            if (
+              error.code === 4001 &&
+              error.message === "MetaMask Tx Signature: User denied transaction signature."
+          ) {
+              Swal.fire({
+                  icon: "error",
+                  title: "Transaction Cancelled",
+                  text: "You have cancelled the transaction.",
+              });
+          } else {
+              Swal.fire({
+                  icon: "error",
+                  title: "Error",
+                  text: "An error occurred while processing the transaction.",
+              });
+          }
+          });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         // Handle cancel button click
-        console.log("Cancel button clicked");
+        console.log("Transaction rejected");
       }
     });
   }
@@ -216,7 +273,7 @@ export default function StakeComponent() {
       }
 
       const signer = provider.getSigner();
-      const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC";
+      const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
       const tx = await contract.Deposit_LP(amount);
       const response = await signer.sendTransaction(tx);
@@ -255,7 +312,8 @@ export default function StakeComponent() {
         throw new Error("Provider does not have a valid signer.");
       }
       const signer = provider.getSigner();
-      const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC";
+      console.log(signer)
+      const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
       const tx = await contract.WithdrawLP();
       const response = await signer.sendTransaction(tx);
@@ -282,7 +340,7 @@ export default function StakeComponent() {
         throw new Error("Provider does not have a valid signer.");
       }
       const signer = provider.getSigner();
-      const contractaddress = "0xb79F57f7d90f936D7FBCb5eD65BdA32718F2A5cC";
+      const contractaddress = "0xd38904DCF977fFcB10c12BA784D41EA22Bb4F8a7";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
       const tx = await contract.EmergencyUnstake();
       const response = await signer.sendTransaction(tx);
@@ -309,7 +367,7 @@ export default function StakeComponent() {
         throw new Error("Provider does not have a valid signer.");
       }
       const signer = provider.getSigner();
-      const contractaddress = "0xa8a837e2bf0c37fef5c495951a0dfc33aaead57a";
+      const contractaddress = "0x7d5E668BeB06F8c1318a17139d10BC5605D866EF";
       const contract = new Contract(contractaddress, abi, signer); // "clienttokenaddress"
       const tx = await contract.approve(spender, value);
       const response = await signer.sendTransaction(tx);
@@ -330,24 +388,24 @@ export default function StakeComponent() {
         <header>
           {" "}
           <HeaderComponent></HeaderComponent>
-        </header>
+        </header>{" "}
         {isMobile ? (
           <video
             ref={videoRefMobile}
-            className="min-w-full z-0 min-h-full relative object-cover visible md:invisible"
+            className="min-w-full z-0 min-h-full relative object-cover"
             playsInline
             autoPlay
             loop
             muted
           >
-            <source src="/LinqVidMobile.mp4" type="video/mp4" />
+            <source src="/LinqVidMobile_resized.mp4" type="video/mp4" />
             Your browser does not support the video tag, update your browser
           </video>
         ) : (
           <>
             <video
               ref={videoRefNonMobile}
-              className="min-w-full z-0 min-h-full relative object-cover invisible md:visible"
+              className="min-w-full z-0 min-h-full relative object-cover"
               playsInline
               autoPlay
               loop
@@ -358,59 +416,66 @@ export default function StakeComponent() {
             </video>
           </>
         )}
-        <div className="flex flex-col w-fit absolute top-0 mt-40 z-10">
+        <div className="flex flex-col w-fit absolute top-0 mt-32 z-10">
           <h5
             style={{ fontFamily: "Azonix" }}
-            className="text-center mb-10 text-4xl font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
+            className="text-center mb-5 md:mb-10 text-3xl md:text-4xl
+            leading-tight font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
           >
             LP Staking Station
           </h5>
           <div
             className={
-              " mx-4 flex flex-col opacity-90 border-2 border-gray-500 rounded-2xl px-6 py-4"
+              " mx-4 flex flex-col opacity-90 border-2 border-gray-500 mb-10 -pb-5 rounded-2xl px-2 md:px-6 py-4"
             }
             style={{ backgroundColor: "#0d0d0d" }}
           >
             <p
               style={{ fontFamily: "GroupeMedium" }}
-              className={"text-xl text-center font-bold text-gray-300"}
-            >
-              Amount you want to stake
-            </p>
-            <p
-              style={{ fontFamily: "GroupeMedium" }}
-              className={"text-xl text-center font-bold text-gray-300 my-2"}
+              className={
+                "sm:text-md md:text-xl text-center font-bold text-gray-300 my-2"
+              }
             >
               Locking Period: Approximately two weeks
             </p>
             <p
               style={{ fontFamily: "GroupeMedium" }}
-              className={"text-xl text-center font-bold text-gray-300 my-2"}
+              className={
+                "sm:text-md md:text-xl text-center font-bold text-gray-300"
+              }
             >
               Important: Claim pending rewards before <br /> adding to stake, or
               withdrawing from stake.
             </p>
+            <p
+              style={{ fontFamily: "GroupeMedium" }}
+              className={
+                "sm:text-md md:text-xl text-center font-bold text-gray-300 mt-3"
+              }
+            >
+              Amount you want to stake
+            </p>
             <input
               style={{ backgroundColor: "#4a4a4a" }}
               className={
-                "border-2 justify-center mx-auto border-gray-300 w-fit rounded-2xl px-4 py-2 my-2"
+                "border-2 justify-center mx-auto border-gray-300 w-fit rounded-2xl my-2"
               }
               type="number"
               placeholder="Enter stake amount"
               value={amount}
               onChange={(e) => setAmount(parseFloat(e.target.value))}
             />
-            <div className="flex-row mx-auto my-2 justify-center">
+            <div className="flex flex-col md:flex-row mx-auto my-2 justify-center">
               <button
                 onClick={() => Approve()}
                 style={{ backgroundColor: "#191919" }}
                 className={
-                  "rounded-xl hover:text-white text-gray-400 text-xl px-4 py-2 m-3"
+                  "rounded-xl hover:text-white text-gray-400 justify-center text-md md:text-xl px-4 py-2 m-2"
                 }
               >
                 <p
                   style={{ fontFamily: "GroupeMedium" }}
-                  className={"text-xl font-bold"}
+                  className={"font-bold"}
                 >
                   Approve
                 </p>
@@ -419,12 +484,12 @@ export default function StakeComponent() {
                 onClick={() => Deposit()}
                 style={{ backgroundColor: "#191919" }}
                 className={
-                  "rounded-xl hover:text-white text-gray-400 text-xl px-4 py-2 m-3"
+                  "rounded-xl hover:text-white text-gray-400 justify-center text-md md:text-xl px-4 py-2 m-2"
                 }
               >
                 <p
                   style={{ fontFamily: "GroupeMedium" }}
-                  className={"text-xl font-bold"}
+                  className={"font-bold"}
                 >
                   Deposit LP
                 </p>
@@ -436,26 +501,28 @@ export default function StakeComponent() {
                 fontFamily: "GroupeMedium",
               }}
               className={
-                "text-xl rounded-2xl font-bold bg-gray-300 text-gray-800 py-2"
+                "text-md md:text-xl rounded-2xl font-bold bg-gray-300 text-gray-800 py-2"
               }
             >
               Withdraw LP
             </button>
-            <p className={"my-5"}></p>
+            <p className={"my-2"}></p>
             <div
               className={
-                " mx-auto justify-center flex flex-col rounded-2xl px-6 py-4"
+                " mx-auto justify-center flex flex-col rounded-2xl px-6 py-0 md:py-2"
               }
             >
               <p
                 style={{ fontFamily: "GroupeMedium" }}
-                className={"text-xl font-bold text-gray-300 my-2"}
+                className={
+                  "text-md md:text-xl font-bold text-gray-300 my-0 md:my-2"
+                }
               >
                 Claimable Rewards:
               </p>
               <p
                 style={{ fontFamily: "GroupeMedium" }}
-                className={"text-xl text-center font-bold text-gray-300 my-3"}
+                className={"text-xl text-center font-bold text-gray-300"}
               >
                 {pendingReturns}
               </p>
@@ -466,7 +533,7 @@ export default function StakeComponent() {
                   backgroundColor: "#191919",
                 }}
                 className={
-                  "text-xl rounded-2xl px-6 py-4 font-bold hover:text-white text-gray-400"
+                  "text-xl rounded-2xl px-6 py-2 font-bold hover:text-white text-gray-400"
                 }
               >
                 Claim
