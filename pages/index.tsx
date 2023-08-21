@@ -5,7 +5,6 @@ import styles from "../styles/Home.module.css";
 import HeaderComponent from "../components/Header/HeaderComponent";
 import "tailwindcss-elevation";
 import FooterComponent from "../components/Footer/FooterComponent";
-import DualCardComponent from "../components/DualCards/DualCardComponent";
 import ScrollpositionAnimation from "../hooks/OnScroll";
 import { useCallback, useEffect, useRef, useState } from "react";
 import linqbackground from "../assets/images/linqBackground.jpg";
@@ -15,7 +14,6 @@ import goonsLogoMobile from "../assets/images/goonsLogoMobile.jpg";
 import KomaInuLogo from "../assets/images/Necklace.jpg";
 import { useWeb3React } from "@web3-react/core";
 import ClaimComponent from "../components/Claim/ClaimComponent";
-import MintCardComponent from "../components/Cards/MintCard";
 import {
   ExternalProvider,
   JsonRpcFetchFunc,

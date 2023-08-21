@@ -7,6 +7,8 @@ import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { Provider, Web3Provider } from "@ethersproject/providers";
 import { connectors } from "./connectors";
 import { Modal } from "flowbite-react";
+import Web3Modal from 'web3modal'
+import WalletConnectProvider from '@walletconnect/web3-provider'
 export const ConnectWallet = () => {
   const [visible, setVisible] = useState(false);
 
@@ -33,6 +35,33 @@ export const ConnectWallet = () => {
  //   const provider = window.localStorage.getItem("provider");
  //   if (provider) activate(connectors as any[ typeof provider]);
  // }, []);
+
+ async function getWeb3Modal() {
+  const web3Modal = new Web3Modal({
+    cacheProvider: false,
+    providerOptions: {
+      walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+          infuraId: "e0171a3aab904c6bbe6622e6598770ad"
+        },
+      },
+    },
+  })
+  return web3Modal
+}
+
+/* the connect function uses web3 modal to connect to the user's wallet */
+async function connect() {
+  try {
+    const web3Modal = await getWeb3Modal()
+    const connection = await web3Modal.connect()
+    const provider = new Web3Provider(connection)
+    return provider
+  } catch (err) {
+    console.log('error:', err)
+  }
+}
 
   const { chainId, account, activate, active, library, deactivate } =
     useWeb3React();
@@ -271,7 +300,7 @@ export const ConnectWallet = () => {
                   </li>
                   <li>
                     <a
-                      onClick={() => ConnectWalletConnect()}
+                      onClick={() => connect()}
                       className="cursor-pointer flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                     >
                       <svg
