@@ -7,24 +7,27 @@ import { WalletLinkConnector } from "@web3-react/walletlink-connector";
 import { Provider, Web3Provider } from "@ethersproject/providers";
 import { connectors } from "./connectors";
 import { Modal } from "flowbite-react";
-import Web3Modal from 'web3modal'
-import WalletConnectProvider from '@walletconnect/web3-provider'
-import { MetaMaskSDK } from '@metamask/sdk';
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import { MetaMaskSDK } from "@metamask/sdk";
 export const ConnectWallet = () => {
   const [visible, setVisible] = useState(false);
+  const [connected, setConnected] = useState("");
   const options = {
-    injectedConnector: false,
-    dappMetadata: {name: "My Dapp", url: "http://localhost:3000"},
+    injectedConnector: true,
+    dappMetadata: { name: "My Dapp", url: "http://localhost:3000" },
   };
   const MMSDK = new MetaMaskSDK(options);
 
-const ethereum = MMSDK.getProvider();
-  const injectedConnector = new InjectedConnector(ethereum);
+  const ethereum = MMSDK.getProvider();
+  const injectedConnector = new InjectedConnector({
+    supportedChainIds: [1, 3, 4, 5, 42, 11155111],
+  });
   // const walletconnect = new WalletConnectConnector({
   //   supportedChainIds: [1, 3, 4, 5, 42, 11155111],
   //   rpc: { 1: `https://mainnet.infura.io/v3/e0171a3aab904c6bbe6622e6598770ad`, 5: `https://mainnet.infura.io/v3/e0171a3aab904c6bbe6622e6598770ad` },
   //   bridge: "https://bridge.walletconnect.org",
-  //   qrcode: true,  
+  //   qrcode: true,
   // });
 
   const CoinbaseWallet = new WalletLinkConnector({
@@ -36,62 +39,81 @@ const ethereum = MMSDK.getProvider();
   const setProvider = (type: string) => {
     window.localStorage.setItem("provider", type);
   };
- // useEffect(() => {
- //   const provider = window.localStorage.getItem("provider");
- //   if (provider) activate(connectors as any[ typeof provider]);
- // }, []);
+  // useEffect(() => {
+  //   const provider = window.localStorage.getItem("provider");
+  //   if (provider) activate(connectors as any[ typeof provider]);
+  // }, []);
 
- async function getWeb3Modal() {
-  const web3Modal = new Web3Modal({
-    cacheProvider: false,
-    providerOptions: {
-      walletconnect: {
-        package: WalletConnectProvider,
-        options: {
-          infuraId: "e0171a3aab904c6bbe6622e6598770ad"
+  async function getWeb3Modal() {
+    const web3Modal = new Web3Modal({
+      cacheProvider: false,
+      providerOptions: {
+        walletconnect: {
+          package: WalletConnectProvider,
+          options: {
+            infuraId: "e0171a3aab904c6bbe6622e6598770ad",
+          },
         },
       },
-    },
-  })
-  return web3Modal
-}
-
-/* the connect function uses web3 modal to connect to the user's wallet */
-async function connect() {
-  try {
-    const web3Modal = await getWeb3Modal()
-    const connection = await web3Modal.connect()
-    const provider = new Web3Provider(connection)
-    return provider
-  } catch (err) {
-    console.log('error:', err)
+    });
+    return web3Modal;
   }
-}
 
+  /* the connect function uses web3 modal to connect to the user's wallet */
+  async function connect() {
+    try {
+      const web3Modal = await getWeb3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new Web3Provider(connection);
+      return provider;
+    } catch (err) {
+      console.log("error:", err);
+    }
+  }
 
-
-  const { chainId, account, activate, active, library, deactivate } =
+  const web3dd = useWeb3React();
+  const { chainId, account, activate, active, library, deactivate, connector } =
     useWeb3React();
-  const ConnectInjected = async() => {
-    // const data= await activate(ethereum)
-    // console.log(await injectedConnector.getProvider(),"DATAATAT",ethereum)
-    await activate(injectedConnector);
-    // setProvider("coinbaseWallet");
+  const ConnectInjected = async () => {
+    const data = await ethereum.request({
+      method: "eth_requestAccounts",
+      params: [],
+    });
+    //@ts-ignore
+    setConnected(data[0]);
     setVisible(false);
+    // console.log(MMSDK,"DATA",await injectedConnector.activate,"ASDASDASDAsd",web3dd)
+
+    // const data= await activate(MMSDK)
+    // console.log(await injectedConnector.getProvider(),"DATAATAT",ethereum)
+    // await activate(injectedConnector);
+    // setProvider("coinbaseWallet");
   };
   const ConnectWalletConnect = () => {
     // activate(walletconnect);
     // setProvider("walletConnect");
     // setVisible(false);
   };
+useEffect(() => {
+  if(connected){
+    ethereum.on("accountsChanged", () => {
+      onActiveClick();
+    });
+  }
+}, [connected])
 
+  
   const ConnectCoinbase = () => {
     activate(CoinbaseWallet);
-    setProvider("coinbaseWallet")
+    setProvider("coinbaseWallet");
     setVisible(false);
   };
-  const onActiveClick = () => {
-    deactivate();
+  const onActiveClick = async () => {
+    // deactivate();
+
+    if (ethereum) {
+      setConnected("");
+    }
   };
 
   useEffect(() => {
@@ -109,33 +131,33 @@ async function connect() {
 
   return (
     <div>
-      {active ? (
-         <button
-         type="button"
-         onClick={onActiveClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-       >
-         <p
-           className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-           style={{ fontFamily: "GroupeMedium" }}
-         >
-           Disconnect Wallet{" "}
-         </p>
-       </button>
+      {connected ? (
+        <button
+          type="button"
+          onClick={onActiveClick}
+          className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        >
+          <p
+            className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+            style={{ fontFamily: "GroupeMedium" }}
+          >
+            Disconnect Wallet{" "}
+          </p>
+        </button>
       ) : (
         <div>
-        <button
-         type="button"
-         onClick={OnClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-       >
-         <p
-           className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
-           style={{ fontFamily: "GroupeMedium" }}
-         >
-           Connect Wallet{" "}
-         </p>
-       </button>
+          <button
+            type="button"
+            onClick={OnClick}
+            className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+          >
+            <p
+              className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+              style={{ fontFamily: "GroupeMedium" }}
+            >
+              Connect Wallet{" "}
+            </p>
+          </button>
           <Modal show={visible} size="md" popup={true} onClose={OnOffClick}>
             <Modal.Header />
             <Modal.Body>
@@ -307,7 +329,6 @@ async function connect() {
                       </span>
                     </a>
                   </li>
-                  
                 </ul>
                 <div>
                   <a
