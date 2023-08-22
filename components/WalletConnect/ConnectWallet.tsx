@@ -46,7 +46,7 @@ const MyComponent = () => {
   return (
     <div>
       <button className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-       onClick={connectWalletConnect}>Connect with WalletConnect</button>
+       onClick={connectWalletConnect}>Connect with WalletConnectxxx</button>
       {accounts.length > 0 && (
         <div>
           Connected Accounts:
