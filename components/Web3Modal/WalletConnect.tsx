@@ -133,8 +133,8 @@ async function connect() {
                 <ul className="my-4 space-y-3">
                   {isMobile?<li className="">
                     <a
-                      // onClick={() => ConnectInjected()}
-                      href="https://metamask.app.link/dapp/dapp.creativecreation.io"
+                      onClick={() => ConnectInjected()}
+                      // href="https://metamask.app.link/dapp/dapp.creativecreation.io"
                       className="cursor-pointer flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                     >
                       <svg

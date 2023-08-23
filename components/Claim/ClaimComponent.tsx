@@ -54,7 +54,7 @@ export default function ClaimComponent() {
         return Claimtxid;
         /////
       } catch (error) {
-        console.log(error);
+        console.log(error,"ERROR 1111");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -81,7 +81,7 @@ export default function ClaimComponent() {
         console.log(finalnumber);
         return finalnumber;
       } catch (error) {
-        console.log(error);
+        console.log(error,"error 2");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -105,7 +105,7 @@ export default function ClaimComponent() {
 
         return formattedDistributed;
       } catch (error) {
-        console.log(error);
+        console.log(error,"error 3");
         setLoading(false);
       } finally {
         setLoading(false);
