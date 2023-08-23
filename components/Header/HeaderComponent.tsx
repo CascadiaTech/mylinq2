@@ -11,8 +11,8 @@ import { Web3Button } from '@web3modal/react'
 import { Web3Modal } from "@web3modal/react";
 import { EthereumClient, w3mConnectors, w3mProvider } from "@web3modal/ethereum";
 import { Web3Provider } from "@ethersproject/providers";
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import { arbitrum, mainnet, polygon } from 'wagmi/chains';
+// import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+// import { arbitrum, mainnet, polygon } from 'wagmi/chains';
 
 import { Dropdown } from "flowbite-react";
 import { useRouter } from "next/router";
@@ -34,7 +34,7 @@ export default function HeaderComponent() {
     }
   }
 
-  const chains = [arbitrum, mainnet, polygon]
+  // const chains = [arbitrum, mainnet, polygon]
 const projectId = 'e860804a2106941d3e0efee245ad7d7a';
 
   const router = useRouter();
