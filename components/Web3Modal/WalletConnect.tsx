@@ -134,7 +134,7 @@ async function connect() {
                   {isMobile?<li className="">
                     <a
                       // onClick={() => ConnectInjected()}
-                      href="https://metamask.app.link/dapp/mylinq.vercel.app/"
+                      href="https://metamask.app.link/dapp/mylinq-i1xtyzaqm-husnaintahir2.vercel.app/"
                       className="cursor-pointer flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                     >
                       <svg
