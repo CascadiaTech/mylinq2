@@ -278,6 +278,7 @@ const Home: NextPage = () => {
     {/* <Image className="z-0  " src={linqbackground}></Image> */}
     <div className={"flex flex-col  z-10 mx-auto justify-center "}></div>
     <div className={" z-10 my-20 flex flex-col justify-center lg:flex-row "}>
+    
       {isMobile == true ? <><div className={`mx-5 text-center self-center justify-center`}>
         <ClaimComponent></ClaimComponent>
       </div>
@@ -290,6 +291,7 @@ const Home: NextPage = () => {
       </div>
         <p className={"my-5"}></p></>: null}
      
+    </div>
     </div>
   </main>
 </div>
