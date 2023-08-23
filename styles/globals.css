@@ -10,6 +10,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    /* background-image: url("../assets/images//linqBackground.jpg"); */
 }
 
 a {
@@ -801,7 +802,7 @@ body{
   background: #42455a;
 }
 section{
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -856,3 +857,13 @@ section .text-container .text-box h3{
     flex-direction: column;
   }
 }
+
+.div-bg{
+  background-image: url('../assets//images/linqBackground.jpg');
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
+}
+
+
+

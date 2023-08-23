@@ -13,6 +13,10 @@
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 0, 0);
+  background-image: url('../assets//images/linqBackground.jpg');
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat;
 }
 .mainpage {
   min-height: 100vh;
@@ -142,3 +146,4 @@
     filter: invert(1);
   }
 }
+
