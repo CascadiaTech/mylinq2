@@ -284,16 +284,7 @@ const Home: NextPage = () => {
         <p className={"my-5"}></p></>: null}
     
       <div className={` w-full lg:w-auto  flex justify-center mx-auto text-center`} style={{ fontFamily: "Mandalore" }}>
-      <div className="iframe-container">
-          <iframe
-            className={"rounded-xl px-4"}
-            width="400"
-            height="700" // Set the iframe's height to 100% for responsiveness
-            allow="clipboard-read *; clipboard-write *; web-share *; accelerometer *; autoplay *; camera *; gyroscope *; payment *; geolocation *"
-            src="https://flooz.xyz/embed/trade?swapDisabled=false&swapToTokenAddress=0x3e34eabF5858a126cb583107E643080cEE20cA64&swapLockToToken=true&onRampDisabled=false&onRampAsDefault=false&onRampDefaultAmount=10000&onRampTokenAddress=0x3e34eabF5858a126cb583107E643080cEE20cA64&onRampLockToken=true&stakeDisabled=true&network=eth&lightMode=false&primaryColor=%23463b72&backgroundColor=transparent&roundedCorners=10&padding=20&refId=4itSAj"
-          ></iframe>
-        </div>
-      </div>
+
       {isMobile == false ? <><div className={`mx-5 text-center self-center justify-center`}>
         <ClaimComponent></ClaimComponent>
       </div>
@@ -307,3 +298,4 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
