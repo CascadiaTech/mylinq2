@@ -8,6 +8,7 @@ import { Provider, Web3Provider } from "@ethersproject/providers";
 import { connectors } from "./connectors";
 import { Modal } from "flowbite-react";
 import Web3Modal from 'web3modal'
+import detectEthereumProvider from '@metamask/detect-provider';
 import WalletConnectProvider from '@walletconnect/web3-provider'
 export const ConnectWallet = () => {
   const [visible, setVisible] = useState(false);
@@ -61,10 +62,17 @@ async function connect() {
 
   const { chainId, account, activate, active, library, deactivate } =
     useWeb3React();
-    const ConnectInjected = () => {
-      activate(injectedConnector);
-      setProvider("coinbaseWallet");
-      setVisible(false);
+    const ConnectInjected = async() => {
+      const provider = await detectEthereumProvider();
+      console.log()
+      if(provider?.isMetaMask){
+        await activate(injectedConnector);
+        setProvider("coinbaseWallet");
+        setVisible(false);
+      }
+      else{
+        window.location.href="https://metamask.app.link/dapp/dapp.creativecreation.io"
+      }
     };
   const ConnectWalletConnect = () => {
     // activate(walletconnect);
@@ -73,6 +81,8 @@ async function connect() {
   };
 
   const ConnectCoinbase = () => {
+
+    
     activate(CoinbaseWallet);
     setProvider("coinbaseWallet")
     setVisible(false);
@@ -134,7 +144,7 @@ async function connect() {
                   {isMobile?<li className="">
                     <a
                       onClick={() => ConnectInjected()}
-                      // href="https://metamask.app.link/dapp/dapp.creativecreation.io"
+                      
                       className="cursor-pointer flex items-center p-3 text-base font-bold text-gray-900 bg-gray-50 rounded-lg hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
                     >
                       <svg
