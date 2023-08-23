@@ -29,6 +29,7 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { SwapWidget, Theme, darkTheme } from "@uniswap/widgets";
 import StakeComponent from "../components/Stake/StakeComponent";
+import {isMobile} from 'react-device-detect';
 const Home: NextPage = () => {
   const { account, chainId, active } = useWeb3React();
   const showConnectAWallet = Boolean(!account);
@@ -266,6 +267,7 @@ const Home: NextPage = () => {
   //   src={goonsLogoMobile}
   // ></Image>
   // </div>
+  console.log(isMobile, "mobileeeee")
 
   return (
     <div className="scroll-smooth ">
@@ -276,6 +278,11 @@ const Home: NextPage = () => {
     {/* <Image className="z-0  " src={linqbackground}></Image> */}
     <div className={"flex flex-col  z-10 mx-auto justify-center "}></div>
     <div className={" z-10 my-20 flex flex-col justify-center lg:flex-row "}>
+      {isMobile == true ? <><div className={`mx-5 text-center self-center justify-center`}>
+        <ClaimComponent></ClaimComponent>
+      </div>
+        <p className={"my-5"}></p></>: null}
+    
       <div className={` w-full lg:w-auto  flex justify-center mx-auto text-center`} style={{ fontFamily: "Mandalore" }}>
       <div className="iframe-container">
           <iframe
@@ -287,10 +294,11 @@ const Home: NextPage = () => {
           ></iframe>
         </div>
       </div>
-      <p className={"my-5"}></p>
-      <div className={`mx-5 text-center self-center justify-center`}>
+      {isMobile == false ? <><div className={`mx-5 text-center self-center justify-center`}>
         <ClaimComponent></ClaimComponent>
       </div>
+        <p className={"my-5"}></p></>: null}
+     
     </div>
   </main>
 </div>
