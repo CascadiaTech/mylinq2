@@ -71,7 +71,7 @@ async function connect() {
         setVisible(false);
       }
       else{
-        window.location.href="https://metamask.app.link/dapp/dapp.creativecreation.io"
+        window.location.href="https://metamask.app.link/dapp/dapp.linqgroup.io"
       }
     };
   const ConnectWalletConnect = () => {
