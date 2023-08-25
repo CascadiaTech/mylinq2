@@ -196,7 +196,7 @@ export default function ClaimComponent() {
         </div>
       </div>
 
-      <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
+      <div className="fixed mb-4 md:mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
         <p
           style={{ fontFamily: "GroupeMedium" }}
           className="font-sans text-black"
