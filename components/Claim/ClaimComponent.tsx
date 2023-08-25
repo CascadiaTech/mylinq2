@@ -154,9 +154,9 @@ export default function ClaimComponent() {
   }, [account, library?.provider]);
 
   return (
-    <div className="w-screen flex  justify-center">
+    <div className=" ">
       
-      <div className="mt-10 sm:w-[300px] md:w-[350px] lg:w-[500px]">
+      <div className="mt-10 w-[275px] sm:w-[300px] md:w-[350px] lg:w-[500px] ">
         <div className="p-10 inline-block w-[100%] bg-white">
           <p className="text-[25px] font-semibold text-black font-mono">
             CLAIM LP REWARDS
@@ -191,7 +191,7 @@ export default function ClaimComponent() {
         </div>
       </div>
 
-      <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
+      <div className="fixed mb-10 px-2 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
         <p className="font-sans text-black">info@linqgroup.io</p>
         <p className="font-sans text-black">LINQROUP2023</p>
       </div>

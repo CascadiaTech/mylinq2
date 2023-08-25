@@ -271,7 +271,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="scroll-smooth ">
-      <main className={`${styles.main} bg-bg-mobile md:bg-bg-web`}>
+      <main className={`${styles.main} `}>
         
         <header>
           <HeaderComponent />

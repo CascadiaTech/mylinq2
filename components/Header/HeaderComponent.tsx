@@ -53,7 +53,7 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
     <>
       <nav
         style={{ backgroundColor: "#fff" }}
-        className="px-2 sm:px-4 py-10 -my-10 sm:my-0 sm:py-2 flex w-full fixed sm:w-full z-20 top-0 left-0 border-b border-gray-300"
+        className="px-2 sm:px-4 py-2 -my-10 sm:my-0 sm:py-2 flex w-full fixed sm:w-full z-20 top-0 left-0 border-b border-gray-300"
       >
         {/* <div className="container flex flex-nowrap justify-left items-center mx-auto"> */}
         <div className="flex mt-2 justify-end items-end w-full mr-[60px]">
@@ -66,9 +66,9 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
           >
             <ul className="h-auto flex flex-row justify-left self-center sm:my-0 text-left items-left p-4 mt-4 rounded-lg md:space-x-8 md:mt-0 md:text-md ">
               <div className={' flex flex-row top-0 left-0 absolute self-center mt-4 px-4'}>
-              <li className={"self-center mt-10 sm:mt-2 md:mt-2 lg:mt-2"}>
+              <li className={" self-center mt-8 sm:mt-2 md:mt-2 lg:mt-2" }>
                 {" "}
-                <Image className={'self-center'} width={50} height={37.5} src={LINQLogo} alt="asa"></Image>
+                <Image className={'self-center'} width={40} height={37.5} src={LINQLogo} alt="asa"></Image>
               </li>
               </div>
               
