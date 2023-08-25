@@ -193,7 +193,7 @@ export default function ClaimComponent() {
 
       <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
         <p className="font-sans text-black">info@linqgroup.io</p>
-        <p className="font-sans text-black">LINQROUP2023</p>
+        <p className="font-sans text-black">LINQGROUP2023</p>
       </div>
 
       {/* 
