@@ -154,9 +154,9 @@ export default function ClaimComponent() {
   }, [account, library?.provider]);
 
   return (
-    <div className="w-screen flex  justify-center">
+    <div className=" ">
       
-      <div className="mt-10 sm:w-[300px] md:w-[350px] lg:w-[500px]">
+      <div className="mt-12 w-[220px] sm:w-[300px] md:w-[350px] lg:w-[500px] ">
         <div className="p-10 inline-block w-[100%] bg-white">
           <p className="text-[25px] font-semibold text-black font-mono" style={{ fontFamily: "GroupeMedium" }}>
             CLAIM LP REWARDS
@@ -170,6 +170,7 @@ export default function ClaimComponent() {
           <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
             <p style={{ fontFamily: "GroupeMedium" }}>Total LP Distributed </p>
             <p className="mr-4">{totaldistributed}</p>
+            {/* <p className=" flex-shrink" >1232.132132123</p> */}
           </div>
 
           {loading ? (
