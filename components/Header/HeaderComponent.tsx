@@ -66,9 +66,9 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
           >
             <ul className="h-auto flex flex-row justify-left self-center sm:my-0 text-left items-left p-4 mt-4 rounded-lg md:space-x-8 md:mt-0 md:text-md ">
               <div className={' flex flex-row top-0 left-0 absolute self-center mt-4 px-4'}>
-              <li className={"self-center mt-10 sm:mt-2 md:mt-2 lg:mt-2"}>
+              <li className={"self-center mt-10 mr-5 sm:mt-2 md:mt-2 lg:mt-2"}>
                 {" "}
-                <Image className={'self-center'} width={50} height={37.5} src={LINQLogo} alt="asa"></Image>
+                <Image className={'self-center'} width={50} height={50} src={LINQLogo} alt="asa"></Image>
               </li>
               </div>
               
