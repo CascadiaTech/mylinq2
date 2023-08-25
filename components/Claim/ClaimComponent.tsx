@@ -158,17 +158,17 @@ export default function ClaimComponent() {
       
       <div className="mt-10 sm:w-[300px] md:w-[350px] lg:w-[500px]">
         <div className="p-10 inline-block w-[100%] bg-white">
-          <p className="text-[25px] font-semibold text-black font-mono">
+          <p className="text-[25px] font-semibold text-black font-mono" style={{ fontFamily: "GroupeMedium" }}>
             CLAIM LP REWARDS
           </p>
 
           <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
-            <p>Pending LP Rewards </p>
+            <p style={{ fontFamily: "GroupeMedium" }}>Pending LP Rewards </p>
             <p className="mr-4">{pendingreflections}</p>
           </div>
 
           <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
-            <p>Total LP Distributed </p>
+            <p style={{ fontFamily: "GroupeMedium" }}>Total LP Distributed </p>
             <p className="mr-4">{totaldistributed}</p>
           </div>
 
@@ -176,7 +176,7 @@ export default function ClaimComponent() {
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
             <>
-              <div className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white">
+              <div style={{ fontFamily: "GroupeMedium" }} className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white">
                 <button
                   //  style={{ fontFamily: "Azonix" }}
                   className="font-sans cursor-pointer"
@@ -192,8 +192,8 @@ export default function ClaimComponent() {
       </div>
 
       <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
-        <p className="font-sans text-black">info@linqgroup.io</p>
-        <p className="font-sans text-black">LINQGROUP2023</p>
+        <p style={{ fontFamily: "GroupeMedium" }} className="font-sans text-black">info@linqgroup.io</p>
+        <p style={{ fontFamily: "GroupeMedium" }} className="font-sans text-black">LINQGROUP2023</p>
       </div>
 
       {/* 
