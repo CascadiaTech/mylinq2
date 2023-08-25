@@ -35,8 +35,11 @@ module.exports = {
 
     extend: {
       backgroundImage: {
-        runewaterfall: "url('../assets/images/Falls.jpg')",
+        "runewaterfall": "url('../assets/images/Falls.jpg')",
         "footer-texture": "url('/img/footer-texture.png')",
+        'bg-web':"url('../assets/images/background.png')",
+        'bg-mobile':"url('../assets/images/mobile.png')",
+        
       },
       spacing: {
         100: "50vw",

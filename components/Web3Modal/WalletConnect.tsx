@@ -105,12 +105,12 @@ async function connect() {
   //const modal = new Modal(document.getElementById('modalId'),{placement:'center'})
 
   return (
-    <div>
+    <>
       {active ? (
          <button
          type="button"
          onClick={onActiveClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className="skew-x-[12deg] bg-black text-white focus:ring-4 focus:ring-blue-300 mt-2 text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
        >
          <p
            className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
@@ -120,14 +120,14 @@ async function connect() {
          </p>
        </button>
       ) : (
-        <div>
+        <>
         <button
          type="button"
          onClick={OnClick}
-         className="text-white bg-teal-600 hover:bg-teal-400 focus:ring-4 focus:ring-blue-300 mt-2 rounded-lg text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className=" skew-x-[12deg] bg-black text-white ml-20  focus:ring-4 focus:ring-blue-300 mt-2  text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
        >
          <p
-           className="cursor-pointer block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+           className="cursor-pointer  block py-2  5 pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
            style={{ fontFamily: "GroupeMedium" }}
          >
            Connect Wallet{" "}
@@ -470,8 +470,8 @@ async function connect() {
               </div>
             </Modal.Body>
           </Modal>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 };

@@ -29,7 +29,7 @@ import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { SwapWidget, Theme, darkTheme } from "@uniswap/widgets";
 import StakeComponent from "../components/Stake/StakeComponent";
-import {isMobile} from 'react-device-detect';
+import { isMobile } from "react-device-detect";
 const Home: NextPage = () => {
   const { account, chainId, active } = useWeb3React();
   const showConnectAWallet = Boolean(!account);
@@ -41,32 +41,32 @@ const Home: NextPage = () => {
   const [isended, setisended] = useState(false);
   const [uniswaprovider, setuniswapprivder] = useState();
 
-    //const videoRefMobile = useRef(null);
-    //const videoRefNonMobile = useRef(null);
-    //const [isMobile, setIsMobile] = useState(Boolean);
-    //const attemptPlay = (videoRef: any) => {
-    //  videoRef && videoRef.current && videoRef.current.defaultMuted == false;
-    //  videoRef.current.load() &&
-    //    videoRef.current.play().catch((error: any) => {
-    //      console.log("error attempting to play", error);
-    //    });
-    //};
+  //const videoRefMobile = useRef(null);
+  //const videoRefNonMobile = useRef(null);
+  //const [isMobile, setIsMobile] = useState(Boolean);
+  //const attemptPlay = (videoRef: any) => {
+  //  videoRef && videoRef.current && videoRef.current.defaultMuted == false;
+  //  videoRef.current.load() &&
+  //    videoRef.current.play().catch((error: any) => {
+  //      console.log("error attempting to play", error);
+  //    });
+  //};
   //
-    //useEffect(() => {
-    //  const videoRef = isMobile ? videoRefMobile : videoRefNonMobile;
-    //  attemptPlay(videoRef);
-    //}, [isMobile]);
+  //useEffect(() => {
+  //  const videoRef = isMobile ? videoRefMobile : videoRefNonMobile;
+  //  attemptPlay(videoRef);
+  //}, [isMobile]);
   //
-    //useEffect(() => {
-    //  const handleResize = () => setIsMobile(window.innerWidth <= 800);
+  //useEffect(() => {
+  //  const handleResize = () => setIsMobile(window.innerWidth <= 800);
   //
-    //  handleResize(); // set initial value
+  //  handleResize(); // set initial value
   //
-    //  window.addEventListener("resize", handleResize);
+  //  window.addEventListener("resize", handleResize);
   //
-    //  return () => window.removeEventListener("resize", handleResize);
-    //}, []);
-    //console.log(isMobile);
+  //  return () => window.removeEventListener("resize", handleResize);
+  //}, []);
+  //console.log(isMobile);
 
   useEffect(() => {
     async function setProvider() {
@@ -267,37 +267,44 @@ const Home: NextPage = () => {
   //   src={goonsLogoMobile}
   // ></Image>
   // </div>
-  console.log(isMobile, "mobileeeee")
+  console.log(isMobile, "mobileeeee");
 
   return (
     <div className="scroll-smooth ">
-  <main className={styles.main}>
-    <header>
-      <HeaderComponent></HeaderComponent>
-    </header>
-    {/* <Image className="z-0  " src={linqbackground}></Image> */}
-    <div className={"flex flex-col  z-10 mx-auto justify-center "}></div>
-    <div className={" z-10 my-20 flex flex-col justify-center lg:flex-row "}>
-    
-      {isMobile == true ? <><div className={`mx-5 text-center self-center justify-center`}>
-        <ClaimComponent></ClaimComponent>
-      </div>
-        <p className={"my-5"}></p></>: null}
-    
-      <div className={` w-full lg:w-auto  flex justify-center mx-auto text-center`} style={{ fontFamily: "Mandalore" }}>
+      <main className={`${styles.main} bg-bg-mobile md:bg-bg-web`}>
+        
+        <header>
+          <HeaderComponent />
+        </header>
+        {/* <Image className="z-0  " src={linqbackground}></Image> */}
+        {/* <div className={"flex flex-col  z-10 mx-auto justify-center "}></div> */}
+        <div className={" z-10 flex flex-col justify-center lg:flex-row "}>
+          {isMobile == true ? (
+            <>
+              <div className={`mx-5 text-center self-center justify-center`}>
+                <ClaimComponent />
+              </div>
+              <p className={"my-5"}></p>
+            </>
+          ) : null}
 
-      {isMobile == false ? <><div className={`mx-5 text-center self-center justify-center`}>
-        <ClaimComponent></ClaimComponent>
-      </div>
-        <p className={"my-5"}></p></>: null}
-     
+          <div
+            className={` w-full lg:w-auto  flex justify-center mx-auto text-center`}
+            style={{ fontFamily: "Mandalore" }}
+          >
+            {isMobile == false ? (
+              <>
+                <div className={` text-center self-center justify-center`}>
+                  <ClaimComponent />
+                </div>
+                <p className={"my-5"}></p>
+              </>
+            ) : null}
+          </div>
+        </div>
+      </main>
     </div>
-    </div>
-  </main>
-</div>
-
   );
 };
 
 export default Home;
-

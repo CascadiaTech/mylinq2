@@ -54,7 +54,7 @@ export default function ClaimComponent() {
         return Claimtxid;
         /////
       } catch (error) {
-        console.log(error,"ERROR 1111");
+        console.log(error, "ERROR 1111");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -81,7 +81,7 @@ export default function ClaimComponent() {
         console.log(finalnumber);
         return finalnumber;
       } catch (error) {
-        console.log(error,"error 2");
+        console.log(error, "error 2");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -105,7 +105,7 @@ export default function ClaimComponent() {
 
         return formattedDistributed;
       } catch (error) {
-        console.log(error,"error 3");
+        console.log(error, "error 3");
         setLoading(false);
       } finally {
         setLoading(false);
@@ -154,8 +154,49 @@ export default function ClaimComponent() {
   }, [account, library?.provider]);
 
   return (
-    <>
-      <div className="flex flex-col w-fit">
+    <div className="w-screen flex  justify-center">
+      
+      <div className="mt-10 sm:w-[300px] md:w-[350px] lg:w-[500px]">
+        <div className="p-10 inline-block w-[100%] bg-white">
+          <p className="text-[25px] font-semibold text-black font-mono">
+            CLAIM LP REWARDS
+          </p>
+
+          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
+            <p>Pending LP Rewards </p>
+            <p className="mr-4">{pendingreflections}</p>
+          </div>
+
+          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
+            <p>Total LP Distributed </p>
+            <p className="mr-4">{totaldistributed}</p>
+          </div>
+
+          {loading ? (
+            <Spin indicator={antIcon} className="add-spinner" />
+          ) : (
+            <>
+              <div className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white">
+                <button
+                  //  style={{ fontFamily: "Azonix" }}
+                  className="font-sans cursor-pointer"
+                  type="button"
+                  onClick={() => Claimtoken()}
+                >
+                  CLAIM
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+
+      <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
+        <p className="font-sans text-black">info@linqgroup.io</p>
+        <p className="font-sans text-black">LINQROUP2023</p>
+      </div>
+
+      {/* 
         <h5
           style={{ fontFamily: "Azonix" }}
           className="text-center mb-2 text-4xl font-bold tracking-wide self-center text-gray-300 dark:text-gray-300"
@@ -179,9 +220,9 @@ export default function ClaimComponent() {
           <div className={"rounded-xl text-black text-xl px-4 py-2 m-3"}>
             <p className={"text-xl text-gray-300"}>{totaldistributed}</p>
           </div>
-        </div>
+        </div> */}
 
-        {loading ? (
+      {/* {loading ? (
           <Spin indicator={antIcon} className="add-spinner" />
         ) : (
           <>
@@ -198,8 +239,7 @@ export default function ClaimComponent() {
               </button>
             </div>
           </>
-        )}
-      </div>
-    </>
+        )} */}
+    </div>
   );
 }
