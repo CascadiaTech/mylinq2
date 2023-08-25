@@ -155,29 +155,33 @@ export default function ClaimComponent() {
 
   return (
     <div className=" ">
-      
-      <div className="mt-12 w-[220px] sm:w-[300px] md:w-[350px] lg:w-[500px] ">
-        <div className="p-10 inline-block w-[100%] bg-white">
-          <p className="text-[25px] font-semibold text-black font-mono" style={{ fontFamily: "GroupeMedium" }}>
+      <div className="mt-12 w-[270px] sm:w-[300px] md:w-[350px] lg:w-[500px] ">
+        <div className="p-6 md:p-10 inline-block w-[100%] bg-white">
+          <p
+            className="text-[25px] font-semibold text-black font-mono"
+            style={{ fontFamily: "GroupeMedium" }}
+          >
             CLAIM LP REWARDS
           </p>
 
-          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
+          <div className="flex flex-col md:flex-row justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
             <p style={{ fontFamily: "GroupeMedium" }}>Pending LP Rewards </p>
-            <p className="mr-4">{pendingreflections}</p>
+            <p className="mr-4 md:mr-0">{pendingreflections}</p>
           </div>
 
-          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
-            <p style={{ fontFamily: "GroupeMedium" }}>Total LP Distributed </p>
-            <p className="mr-4">{totaldistributed}</p>
-            {/* <p className=" flex-shrink" >1232.132132123</p> */}
+          <div className="flex flex-col md:flex-row justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
+            <p style={{ fontFamily: "GroupeMedium" }}>Total LP Distributed</p>
+            <p className="mr-4 md:mr-0">{totaldistributed}</p>
           </div>
 
           {loading ? (
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
             <>
-              <div style={{ fontFamily: "GroupeMedium" }} className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white">
+              <div
+                style={{ fontFamily: "GroupeMedium" }}
+                className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white"
+              >
                 <button
                   //  style={{ fontFamily: "Azonix" }}
                   className="font-sans cursor-pointer"
@@ -193,8 +197,18 @@ export default function ClaimComponent() {
       </div>
 
       <div className="fixed mb-10 px-1 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
-        <p style={{ fontFamily: "GroupeMedium" }} className="font-sans text-black">info@linqgroup.io</p>
-        <p style={{ fontFamily: "GroupeMedium" }} className="font-sans text-black">LINQGROUP2023</p>
+        <p
+          style={{ fontFamily: "GroupeMedium" }}
+          className="font-sans text-black"
+        >
+          info@linqgroup.io
+        </p>
+        <p
+          style={{ fontFamily: "GroupeMedium" }}
+          className="font-sans text-black"
+        >
+          LINQGROUP2023
+        </p>
       </div>
 
       {/* 
