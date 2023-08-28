@@ -110,7 +110,7 @@ async function connect() {
          <button
          type="button"
          onClick={onActiveClick}
-         className="rounded-lg bg-black text-white  focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md 
+         className="rounded-lg bg-gradient-to-r from-slate-800 to-blackk text-white  focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md 
          px-2 py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
        >
          <p
@@ -125,7 +125,7 @@ async function connect() {
         <button
          type="button"
          onClick={OnClick}
-         className="rounded-lg bg-black text-white   focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md
+         className="rounded-lg bg-gradient-to-r from-slate-800 to-black text-white   focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md
           px-2  py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
        >
          <p
