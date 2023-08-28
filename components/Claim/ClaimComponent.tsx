@@ -203,7 +203,7 @@ export default function ClaimComponent() {
                   type="button"
                   onClick={() => Claimtoken()}
                 >
-                  CLAIM
+                 LP CLAIM
                 </button>
               </div>
             </>
