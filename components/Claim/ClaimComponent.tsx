@@ -157,7 +157,7 @@ export default function ClaimComponent() {
     <div className=" ">
       
       {/* <div className="mt-12 w-[170px] sm:w-[300px] md:w-[350px] lg:w-[500px] "> */}
-        <div className=" py-6 px-4 sm:p-10 mt-5 sm:mt-10 md:mt-10 lg:mt-15 inline-block w-[90%] md:w-[70%] lg:w-[60%] overflow-x-auto bg-white">
+        <div className=" py-6 px-4 sm:p-10 mt-5 sm:mt-10 md:mt-10 lg:mt-15 inline-block w-[100%] sm:w-[350px] md:w-[550px] lg:w-[750px] overflow-x-auto bg-white">
           <p className="text-[15px] sm:text-[20px]  md:text-[23px] lg:md:text-[25px] font-semibold text-black"
           style={{ fontFamily: "Azonix" }}>
             CLAIM LP REWARDS
@@ -212,7 +212,7 @@ export default function ClaimComponent() {
       {/* </div> */}
 
       <div className="fixed mb-10 px-2 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full  grid grid-cols-2 ">
-        <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
+        <p className="font-sans text-black text-[18px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
         col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 " style={{ fontFamily: "Azonix" }}>LINQGROUP.IO</p>
         <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
         col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1" style={{ fontFamily: "Azonix" }}>LINQGROUP2023</p>
