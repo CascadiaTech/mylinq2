@@ -212,7 +212,7 @@ export default function ClaimComponent() {
       {/* </div> */}
 
       <div className="fixed mb-10 px-2 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full  grid grid-cols-2 ">
-        <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
+        <p className="font-sans text-black text-[18px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
         col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 " style={{ fontFamily: "Azonix" }}>LINQGROUP.IO</p>
         <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
         col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1" style={{ fontFamily: "Azonix" }}>LINQGROUP2023</p>
