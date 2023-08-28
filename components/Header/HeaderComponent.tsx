@@ -97,10 +97,10 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
                       className="text-xl text-white rounded-xl px-2 py-2"
                     >
                       <li className="pt-1 hover:border-b-2 border-gray-300">
-                        <Link href={"/"}>Dashboard</Link>
+                        <Link href={"/"}>LP Claim</Link>
                       </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300">
-                        <Link href={"/Dapp/StakingPage"}>Claim</Link>
+                        <Link href={"/Dapp/StakingPage"}>LP StaQing</Link>
                       </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"https://linktr.ee/linqgroup"}>Link Tree</Link>
