@@ -110,7 +110,8 @@ async function connect() {
          <button
          type="button"
          onClick={onActiveClick}
-         className="skew-x-[12deg] bg-black text-white ml-[120px] focus:ring-4 focus:ring-blue-300 mt-8 sm:mt-0 md:mt-0 text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className="rounded-lg bg-black text-white  focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md 
+         px-2 py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
        >
          <p
            className="cursor-pointer block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center  pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
@@ -124,10 +125,12 @@ async function connect() {
         <button
          type="button"
          onClick={OnClick}
-         className=" skew-x-[12deg] bg-black text-white ml-[110px]  focus:ring-4 focus:ring-blue-300 mt-8 sm:mt-0 md:mt-0 text-md px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+         className="rounded-lg bg-black text-white   focus:ring-4 focus:ring-blue-300 mt-[40px] sm:mt-0 md:mt-0 text-md
+          px-2  py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
        >
          <p
            className="cursor-pointer  block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white" 
+           style={{ fontFamily: "GroupeMedium" }}
          >
            Connect Wallet{" "}
          </p>

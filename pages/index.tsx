@@ -278,7 +278,7 @@ const Home: NextPage = () => {
         </header>
         {/* <Image className="z-0  " src={linqbackground}></Image> */}
         {/* <div className={"flex flex-col  z-10 mx-auto justify-center "}></div> */}
-        <div className={" z-10 flex flex-col justify-center lg:flex-row "}>
+        <div className="w-full">
           {isMobile == true ? (
             <>
               <div className={`mx-5 text-center self-center justify-center`}>

@@ -12,12 +12,37 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: lightgray;
-  background-image: url('../assets//images/background.png');
-  background-size: cover; /* Cover the entire container */
+  background-color: rgb(232, 232, 232);
+  background-image: url('../assets//images/backgroundnew.png');
+  background-size: cover;
+   /* Cover the entire container */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat;
 }
+
+
+/* Custom responsive styles */
+@media (max-width: 640px) {
+  .responsive-image {
+    width: 10px;
+    height: 9px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-image {
+    width: 20px;
+    height: 18px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .responsive-image {
+    width: 40px;
+    height: 37.5px;
+  }
+}
+
 .mainpage {
   min-height: 100vh;
   padding: 4rem 0;

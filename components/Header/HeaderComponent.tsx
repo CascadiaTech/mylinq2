@@ -5,8 +5,8 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import LinqLogo from "../../assets/images/LinqLogo.png";
-import MENUBar from "../../assets/images/Menu.png";
-import LINQLogo from "../../assets/images/logo.png";
+import MENUBar from "../../assets/images/menuBars.png";
+import LINQLogo from "../../assets/images/logoNew.png";
 
 import { ConnectWallet } from "../Web3Modal/WalletConnect";
 import { Web3Button } from '@web3modal/react'
@@ -55,8 +55,8 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
         style={{ backgroundColor: "#fff" }}
         className="px-2 sm:px-4 py-2 -my-10 sm:my-0 sm:py-2 flex w-full fixed sm:w-full z-20 top-0 left-0 border-b border-gray-300"
       >
-        {/* <div className="container flex flex-nowrap justify-left items-center mx-auto"> */}
-        <div className="flex mt-2 justify-end items-end w-full mr-[60px]">
+        
+        <div className="flex mt-2  justify-center sm:justify-center md:justify-end  lg:justify-end  w-full  ml-20 sm:ml-20 md:ml-20 lg:ml-20 sm:mr-10 md:mr-10 lg:mr-10">
         <ConnectWallet></ConnectWallet>
       <p className={"mx-5 sm:mx-0"}></p>
     </div>
@@ -65,10 +65,10 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
             id="navbar-sticky"
           >
             <ul className="h-auto flex flex-row justify-left self-center sm:my-0 text-left items-left p-4 mt-4 rounded-lg md:space-x-8 md:mt-0 md:text-md ">
-              <div className={' flex flex-row top-0 left-0 absolute self-center mt-4 px-4'}>
-              <li className={" self-center mt-8 sm:mt-2 md:mt-2 lg:mt-2" }>
+              <div className={' flex flex-row top-0 left-0 absolute self-center mt-4 px-1 sm:px-4 md:px-4 lg:px-4 '}>
+              <li className={"self-center mt-8 sm:mt-[-5px] md:mt-0 lg:mt-0 " }>
                 {" "}
-                <Image className={'self-center'} width={40} height={37.5} src={LINQLogo} alt="asa"></Image>
+                <Image   className="self-center " width={50} height={50} src={LINQLogo} alt="asa"></Image>
               </li>
               </div>
               
@@ -79,13 +79,13 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
                 <div className="flex transition-all flex-col items-center ">
                   <div
                     onClick={() => Onclick()}
-                    className="bg-purplegif rounded-full w-fit px-2 pt-1"
+                    className="bg-purplegif rounded-full w-fit px-2  ml-12"
                     ref={headerRef}
                   >
                     <Image
                       className={`rotate-${hidden.rotate.toString()} text-black transition-all duration-300 cursor-pointer`}
-                      height={20}
-                      width={20}
+                      height={35}
+                      width={35}
                       src={MENUBar}
                     />
                   </div>
@@ -118,10 +118,12 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
                     </ul>
                   </div>
                 </div>
+
+                
               </ul>
             </ul>
           </div>
-        {/* </div> */}
+        
       </nav>
     </>
   );

@@ -156,31 +156,50 @@ export default function ClaimComponent() {
   return (
     <div className=" ">
       
-      <div className="mt-12 w-[220px] sm:w-[300px] md:w-[350px] lg:w-[500px] ">
-        <div className="p-10 inline-block w-[100%] bg-white">
-          <p className="text-[25px] font-semibold text-black font-mono">
+      {/* <div className="mt-12 w-[170px] sm:w-[300px] md:w-[350px] lg:w-[500px] "> */}
+        <div className=" py-6 px-4 sm:p-10 mt-5 sm:mt-10 md:mt-10 lg:mt-15 inline-block w-[90%] md:w-[350px] lg:w-[700px] overflow-x-auto bg-white">
+          <p className="text-[15px] sm:text-[20px]  md:text-[23px] lg:md:text-[25px] font-semibold text-black"
+          style={{ fontFamily: "Azonix" }}>
             CLAIM LP REWARDS
           </p>
 
-          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
-            <p>Pending LP Rewards </p>
-            <p className="mr-4">{pendingreflections}</p>
+          <div className="flex flex-col lg:flex-row lg:justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mb-10 mt-10">
+            <p className="col-span-2  sm:col-span-1  md:col-span-1 lg:col-span-1 text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] " style={{textAlign:'initial', fontFamily: "GroupeMedium" }}>Pending LP Rewards </p>
+            <p className="mr-4 col-span-2 justify-self-start  sm:justify-self-end md:justify-self-end lg:justify-self-end sm:col-span-1 md:col-span-1 lg:col-span-1
+            text-[10px] sm:text-[15px] md:text-[15px] lg:text-[16px] max-w-[300px]"
+            style={{ fontFamily: "GroupeMedium" }}>
+              {/* {pendingreflections} */}
+              23123.23213232312321321231232
+              </p>
           </div>
 
-          <div className="flex justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
-            <p>Total LP Distributed </p>
-            <p className="mr-4">{totaldistributed}</p>
-            {/* <p className=" flex-shrink" >1232.132132123</p> */}
+          <div className="flex flex-col lg:flex-row lg:justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
+            <p className="col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px]" style={{textAlign:'initial' ,fontFamily: "GroupeMedium" }}>Total LP Distributed </p>
+            {/* <p className="mr-4 col-span-2 justify-self-start  sm:justify-self-end md:justify-self-end lg:justify-self-end  sm:col-span-1 md:col-span-1 lg:col-span-1">{totaldistributed}</p> */}
+            <p className="mr-4 col-span-2 justify-self-start  sm:justify-self-end md:justify-self-end lg:justify-self-end  sm:col-span-1 md:col-span-1 lg:col-span-1 
+            text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] max-w-[300px]" 
+            style={{ fontFamily: "GroupeMedium", wordWrap: "break-word" }}>
+              {/* {totaldistributed} */}
+              23123.23213232312321321231232
+              </p>
           </div>
+          {/* <div className="grid grid-cols-2 font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5">
+            <p className="col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px]" style={{textAlign:'initial' ,fontFamily: "GroupeMedium" }}>Total LP Distributed </p>
+            <p className="mr-4 col-span-2 justify-self-start  sm:justify-self-end md:justify-self-end lg:justify-self-end  sm:col-span-1 md:col-span-1 lg:col-span-1 
+            text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] max-w-[200px]" 
+            style={{ fontFamily: "GroupeMedium", wordWrap: "break-word" }}>
+              23123.23213232312321321231232
+              </p>
+          </div> */}
 
           {loading ? (
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
             <>
-              <div className=" px-3 py-2 text-[20px] skew-x-[12deg] text-center sm:mt-20  sm:w-[50%] md:w-[35%] lg:w-[40%] bg-black text-white">
+               <div className="flex justify-center items-center mt-10">
                 <button
-                  //  style={{ fontFamily: "Azonix" }}
-                  className="font-sans cursor-pointer"
+                   style={{ fontFamily: "Azonix" }}
+                   className="font-sans cursor-pointer text-[20px] rounded-lg text-center bg-black text-white py-2 px-5 sm:px-10 md:px-10 lg:px-10"
                   type="button"
                   onClick={() => Claimtoken()}
                 >
@@ -190,11 +209,13 @@ export default function ClaimComponent() {
             </>
           )}
         </div>
-      </div>
+      {/* </div> */}
 
-      <div className="fixed mb-10 px-2 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full   flex justify-between">
-        <p className="font-sans text-black">info@linqgroup.io</p>
-        <p className="font-sans text-black">LINQROUP2023</p>
+      <div className="fixed mb-10 px-2 sm:px-5 md:px-10 lg:px-10 left-0 bottom-0 bg-transparent  w-full  grid grid-cols-2 ">
+        <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
+        col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1 " style={{ fontFamily: "Azonix" }}>LINQGROUP.IO</p>
+        <p className="font-sans text-black text-[12px] sm:text-[15px] md:text-[15px] lg:text-[16px] 
+        col-span-2 sm:col-span-1 md:col-span-1 lg:col-span-1" style={{ fontFamily: "Azonix" }}>LINQGROUP2023</p>
       </div>
 
       {/* 
