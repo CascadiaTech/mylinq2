@@ -271,35 +271,21 @@ const Home: NextPage = () => {
 
   return (
     <div className="scroll-smooth ">
-      <main className={`${styles.main} `}>
-        
         <header>
           <HeaderComponent />
         </header>
         {/* <Image className="z-0  " src={linqbackground}></Image> */}
         {/* <div className={"flex flex-col  z-10 mx-auto justify-center "}></div> */}
+      <main className={`${styles.main} `}>
         <div className="w-full">
-          {isMobile == true ? (
-            <>
-              <div className={`mx-5 text-center self-center justify-center`}>
-                <ClaimComponent />
-              </div>
-              <p className={"my-5"}></p>
-            </>
-          ) : null}
-
           <div
             className={` w-full lg:w-auto  flex justify-center mx-auto text-center`}
             style={{ fontFamily: "Mandalore" }}
           >
-            {isMobile == false ? (
-              <>
-                <div className={` text-center self-center justify-center`}>
-                  <ClaimComponent />
-                </div>
-                <p className={"my-5"}></p>
-              </>
-            ) : null}
+            <div className={` text-center self-center justify-center`}>
+              <ClaimComponent />
+            </div>
+            <p className={"my-5"}></p>
           </div>
         </div>
       </main>
