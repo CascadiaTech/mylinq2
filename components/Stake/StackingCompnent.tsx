@@ -321,7 +321,7 @@ const StackComponent = () => {
       setAmount(max);
     }
   };
-  const Claimtoken = useCallback(async () => {
+  const Claimtoken = async () => {
     console.log(amount, "AMOUNT");
     if (!account) {
       Swal.fire({
@@ -340,11 +340,12 @@ const StackComponent = () => {
       const lpContract = new Contract(LPtokenContract, LPTokenAbi, signer);
       // console.log(lpContract);
       const lpApproval = await lpContract.approve(
-        account,
+        fourteenDayContractAddress,
         Web3.utils.toWei(amount)
       ); //.claim()
-      console.log(lpApproval);
       await lpApproval.wait();
+      console.log(lpApproval,"APPROVAL",Web3.utils.toWei(amount));
+
       const fourteenDayContract = new Contract(
         fourteenDayContractAddress,
         fourteenDayStackAbi,
@@ -352,8 +353,9 @@ const StackComponent = () => {
       );
       console.log(fourteenDayContract);
 
-      const stacked = await fourteenDayContract.stake(Web3.utils.toWei(amount)); //.claim()
-      const signtransaction = await signer.signTransaction(stacked);
+      const newAmount=Web3.utils.toWei(amount)
+      const stacked = await fourteenDayContract.stake(newAmount); //.claim()
+      // const signtransaction = await signer.signTransaction(stacked);
       console.log(signer, "signerr", stacked);
       Swal.fire({
         icon: "success",
@@ -373,7 +375,7 @@ const StackComponent = () => {
     } finally {
       setLoading(false);
     }
-  }, [account, library?.provider, amount]);
+  }
   return (
     <div style={{ fontFamily: "GroupeMedium" }} className="py-6 px-4 m-auto sm:p-10   w-[350px] sm:w-[350px] md:w-[550px] lg:w-[450px]   bg-white">
       <div className="flex flex-col space-y-5">
@@ -397,7 +399,7 @@ const StackComponent = () => {
         <div className="flex justify-center items-center">
           <button
             style={{ fontFamily: "GroupeMedium" }}
-            className="font-sans italic cursor-pointer text-[20px] rounded-lg text-center border-black border-2 text-white bg-black py-2 px-5 sm:px-10 md:px-10 lg:px-10"
+            className="font-sans  cursor-pointer text-[20px] rounded-lg text-center border-black border-2 text-white bg-black py-2 px-5 sm:px-10 md:px-10 lg:px-10"
             type="button"
             onClick={Claimtoken}
             disabled={loading}
@@ -421,7 +423,7 @@ const StackingCompnent = () => {
     <>
       <div className="py-5 px-4 sm:p-5 mt-5 sm:mt-10 md:mt-10 lg:mt-15  w-[350px] sm:w-[350px] md:w-[550px] min-h-[450px] lg:w-[700px] bg-white">
         <h1
-          className="text-black font-sans italic flex justify-center text-center items-center text-[30px]"
+          className="text-black font-sans flex justify-center text-center items-center text-[30px]"
           style={{ fontFamily: "GroupeMedium" }}
         >
           14 Day Staking
@@ -430,7 +432,7 @@ const StackingCompnent = () => {
         <div className="flex justify-center items-center">
           <button
             style={{ fontFamily: "GroupeMedium" }}
-            className={`font-sans mr-6 italic cursor-pointer md:text-[20px] lg:text-[20px] sm:text-[10px]  rounded-lg text-center border-black border-2 py-2 px-5 sm:px-10 md:px-10 lg:px-10 ${
+            className={`font-sans mr-6  cursor-pointer md:text-[20px] lg:text-[20px] sm:text-[10px]  rounded-lg text-center border-black border-2 py-2 px-5 sm:px-10 md:px-10 lg:px-10 ${
               activeStep === "overview"
                 ? "text-black bg-gray-300"
                 : "text-gray-500"
@@ -442,7 +444,7 @@ const StackingCompnent = () => {
           </button>
           <button
             style={{ fontFamily: "GroupeMedium" }}
-            className={`font-sans ml-6 italic cursor-pointer  md:text-[20px] lg:text-[20px] sm:text-[10px] rounded-lg text-center border-black border-2 py-2 px-5 sm:px-10 md:px-10 lg:px-10 ${
+            className={`font-sans ml-6  cursor-pointer  md:text-[20px] lg:text-[20px] sm:text-[10px] rounded-lg text-center border-black border-2 py-2 px-5 sm:px-10 md:px-10 lg:px-10 ${
               activeStep === "stack"
                 ? "text-black bg-gray-300"
                 : "text-gray-500"
