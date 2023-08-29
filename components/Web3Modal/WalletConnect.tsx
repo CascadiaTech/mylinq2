@@ -126,7 +126,7 @@ export const ConnectWallet = () => {
          px-2 py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
         >
           <p
-            className="cursor-pointer block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center  pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+            className="cursor-pointer block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center   text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
             style={{ fontFamily: "GroupeMedium" }}
           >
             Disconnect Wallet{" "}
@@ -141,7 +141,7 @@ export const ConnectWallet = () => {
           px-2  py-2 sm:py-1.5  md:py-1.5 lg:py-1.5 mr-2 mb-2 "
           >
             <p
-              className="cursor-pointer  block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center pl-3 text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
+              className="cursor-pointer  block  text-[12px] sm:text-[18px]  md:text-[18px] lg:text-[18px] text-center  text-white rounded md:bg-transparent md:text-white md:p-0 dark:text-white"
               style={{ fontFamily: "GroupeMedium" }}
             >
               Connect Wallet{" "}
