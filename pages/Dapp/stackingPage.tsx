@@ -4,6 +4,7 @@ import {
   YoutubeOutlined,
 } from "@ant-design/icons";
 import { Spin } from "antd";
+import detectEthereumProvider from "@metamask/detect-provider";
 import React, { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import logoImage from "../../assets/images/newlinqlogobig.png";
@@ -16,32 +17,27 @@ import Image from "next/image";
 import StackingCompnent from "../../components/Stake/StackingCompnent";
 import { useRouter } from "next/router";
 import StackingOverview from "./stacking-overview";
+import { useWeb3React } from "@web3-react/core";
 
 const Stacking = () => {
   const [loading, setLoading] = useState(false);
-  const [account, setAccount] = useState(null);
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const [connected, setConnected] = useState(false);
   const router = useRouter();
+  const { account } = useWeb3React();
+  
   console.log(account, "connectedddlkklkl");
 
-  const checkConnection = async () => {
-    if (window.ethereum && window.ethereum.selectedAddress) {
-      setConnected(true);
-      setAccount(window.ethereum.selectedAddress);
-    } else {
-      setConnected(false);
-      setAccount(null);
-    }
-  };
-
-  useEffect(() => {
-    checkConnection();
-  }, [account]);
-
-  if (account !== null) {
+  
+useEffect(() => {
+  if (account) {
     router.push("/Dapp/stacking-overview");
   }
+}, [account])
+
+  
+
+  
 
   console.log(account, "accocuntttt");
   return (
