@@ -14,7 +14,7 @@ export const ConnectWallet = () => {
   const [visible, setVisible] = useState(false);
   
   const injectedConnector = new InjectedConnector({
-    supportedChainIds: [1, 3, 4, 5, 42, 11155111],
+    supportedChainIds: [1, 3, 4, 5, 42, 11155111,97],
   });
 
   const CoinbaseWallet = new WalletLinkConnector({
@@ -67,6 +67,10 @@ async function connect() {
       console.log()
       if(provider?.isMetaMask){
         await activate(injectedConnector);
+
+        // const networkId = await window.ethereum.request({ method: 'eth_chainId' });
+        // const networkIdDecimal = parseInt(networkId, 16);
+        // console.log(networkIdDecimal,"NETWORDDDD")
         setProvider("coinbaseWallet");
         setVisible(false);
       }
