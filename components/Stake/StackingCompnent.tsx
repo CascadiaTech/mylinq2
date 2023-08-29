@@ -26,11 +26,11 @@ const OverviewComponent = () => {
 
   const unstackStatus = async () => {
     if (!account) {
-      Swal.fire({
-        icon: "error",
-        title: "Connect Your Wallet To Claim",
-        timer: 5000,
-      });
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Connect Your Wallet To Claim",
+      //   timer: 5000,
+      // });
     }
 
     try {
@@ -65,11 +65,11 @@ const OverviewComponent = () => {
 
   const calculateRewards = async () => {
     if (!account) {
-      Swal.fire({
-        icon: "error",
-        title: "Connect Your Wallet To Claim",
-        timer: 5000,
-      });
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Connect Your Wallet To Claim",
+      //   timer: 5000,
+      // });
     }
 
     try {
@@ -88,6 +88,7 @@ const OverviewComponent = () => {
       const rewards = await fourteenDayContract.calculateRewardSinceLastClaim(
         account
       ); //.claim()
+      console.log(rewards,"CLAIMMMMM")
       //       const bigNumber = new BigNumber(rewards); // Replace with your BigNumber instance
       // const normalNumber = bigNumber;
       return rewards.toNumber();
@@ -195,11 +196,18 @@ const OverviewComponent = () => {
 
   useEffect(() => {
     // Set up an interval to call the function every 5 seconds
+  
     const intervalId = setInterval(async () => {
-      const status = await unstackStatus();
-      const rewards = await calculateRewards();
-      setRewards(rewards);
-      setUnstakeStatus(status);
+      console.log(account,"ACCOUNNTTNT",rewards)
+
+      if(account){
+        const status = await unstackStatus();
+        const rewards = await calculateRewards();
+        console.log(rewards,"ASASASasd",status)
+        setRewards(rewards);
+        setUnstakeStatus(status);
+      }
+     
     }, 5000); // 5000 milliseconds = 5 seconds
 
     // Clean up the interval when the component unmounts
@@ -293,11 +301,11 @@ const StackComponent = () => {
       setMax(balance.toString());
     }
     if (!account) {
-      Swal.fire({
-        icon: "error",
-        title: "Connect Your Wallet To Claim",
-        timer: 5000,
-      });
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Connect Your Wallet To Claim",
+      //   timer: 5000,
+      // });
     }
     fetchTokenBalance();
   }, []);
@@ -404,7 +412,7 @@ const StackComponent = () => {
 
 const StackingCompnent = () => {
   const [activeStep, setActiveStep] = useState("overview");
-
+//@ts-ignore
   const handleStepChange = (step) => {
     setActiveStep(step);
   };

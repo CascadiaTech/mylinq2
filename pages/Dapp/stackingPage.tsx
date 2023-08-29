@@ -2,7 +2,6 @@ import {
   LoadingOutlined,
   TwitterOutlined,
   YoutubeOutlined,
-  DiscordOutlined,
 } from "@ant-design/icons";
 import { Spin } from "antd";
 import React, { useEffect, useState } from "react";
@@ -68,7 +67,7 @@ const Stacking = () => {
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
             <div className="flex justify-center items-center  lg:mt-10">
-              <ConnectWallet setAccount={setAccount} />
+              <ConnectWallet />
             </div>
           )}
         </div>

@@ -10,7 +10,7 @@ import { Modal } from "flowbite-react";
 import Web3Modal from "web3modal";
 import detectEthereumProvider from "@metamask/detect-provider";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-export const ConnectWallet = ({ setAccount }) => {
+export const ConnectWallet = () => {
   const [visible, setVisible] = useState(false);
 
   const injectedConnector = new InjectedConnector({
@@ -96,7 +96,7 @@ export const ConnectWallet = ({ setAccount }) => {
         deactivate();
         
         
-        setAccount(null);
+       
       } catch (error) {
         console.error("Error disconnecting from MetaMask:", error);
       }
