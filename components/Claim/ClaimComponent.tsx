@@ -157,7 +157,7 @@ export default function ClaimComponent() {
     <div className=" ">
       
       {/* <div className="mt-12 w-[170px] sm:w-[300px] md:w-[350px] lg:w-[500px] "> */}
-        <div className=" py-6 px-4 sm:p-10 mt-5 sm:mt-10 md:mt-10 lg:mt-15 inline-block w-[100%] sm:w-[350px] md:w-[550px] lg:w-[750px] overflow-x-auto bg-white">
+        <div className=" py-6 px-4 sm:p-10 mt-5 sm:mt-10 md:mt-10 lg:mt-15 inline-block w-[100%] sm:w-[350px] md:w-[550px] lg:w-[750px] overflow-x-auto opacity-80 bg-white">
           <p className="text-[15px] sm:text-[20px]  md:text-[23px] lg:md:text-[25px] font-semibold text-black"
           style={{ fontFamily: "Azonix" }}>
             CLAIM LP REWARDS
@@ -196,10 +196,10 @@ export default function ClaimComponent() {
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
             <>
-               <div className="flex justify-center items-center mt-10">
+               <div className="flex justify-center items-center mt-10 ">
                 <button
-                   style={{ fontFamily: "Azonix" }}
-                   className="font-sans cursor-pointer text-[20px] rounded-lg text-center bg-gradient-to-r from-slate-800 to-black  text-white py-2 px-5 sm:px-10 md:px-10 lg:px-10"
+                   style={{ fontFamily: "Azonix"}}
+                   className="font-sans cursor-pointer text-[20px] rounded-lg text-center bg-gradient-to-r from-black to-black  text-white py-2 px-5 sm:px-10 md:px-10 lg:px-10"
                   type="button"
                   onClick={() => Claimtoken()}
                 >
