@@ -21,6 +21,9 @@ import { useRouter } from "next/router";
 export default function HeaderComponent() {
   const headerRef = useRef<any>(null);
   const [hidden, setHidden] = useState({ hidden: 0, rotate: 0 });
+  const [account, setAccount] = useState(null);
+
+
   const [homepagestyle, setHomepageStyle] = useState(false);
   function Onclick() {
     if (hidden.hidden == 0 && hidden.rotate == 0) {
@@ -57,7 +60,7 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
       >
         
         <div className="flex mt-2  justify-center sm:justify-center md:justify-end  lg:justify-end  w-full  ml-20 sm:ml-20 md:ml-20 lg:ml-20 sm:mr-10 md:mr-10 lg:mr-10">
-        <ConnectWallet></ConnectWallet>
+        <ConnectWallet  setAccount={setAccount}></ConnectWallet>
       <p className={"mx-5 sm:mx-0"}></p>
     </div>
           <div
@@ -100,9 +103,9 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
                       style={{ fontFamily: "Azonix" }}>
                         <Link href={"/"}>LP Claim</Link>
                       </li>
-                      {/* <li className="pt-1 hover:border-b-2 border-gray-300">
-                        <Link href={"/Dapp/StakingPage"}>LP StaQing</Link>
-                      </li> */}
+                      <li className="pt-1 hover:border-b-2 border-gray-300">
+                        <Link href={"/Dapp/stackingPage"}>LP StaQing</Link>
+                      </li>
                       <li className="pt-1 hover:border-b-2 border-gray-300 text-[16px]"
                       style={{ fontFamily: "Azonix" }}>
                         <Link href={"https://linktr.ee/linqgroup"}>Link Tree</Link>
