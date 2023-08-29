@@ -13,7 +13,7 @@ const StackingOverview = () => {
 
   useEffect(() => {
     if (!account) {
-      router.push("/Dapp/stackingPage");
+      router.push("/Dapp/LPstakingpage");
     }
   }, [account])
   return (
