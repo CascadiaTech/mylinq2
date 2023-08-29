@@ -3,7 +3,7 @@
         "inputs": [
             {
                 "internalType": "contract IERC20",
-                "name": "_stakeToken",
+                "name": "_rewardToken",
                 "type": "address"
             }
         ],
@@ -106,6 +106,89 @@
     },
     {
         "inputs": [],
+        "name": "AverageBlockTime",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "CheckBalance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "Deposit_enabled",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "EmergencyFeeWaive",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bool",
+                "name": "state",
+                "type": "bool"
+            }
+        ],
+        "name": "EmergencyMeasures",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_newTime",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_time",
+                "type": "uint256"
+            }
+        ],
+        "name": "SetAverageBlockTimeAndTimeVar",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
         "name": "blockPerMinutes",
         "outputs": [
             {
@@ -187,25 +270,6 @@
                 "type": "address"
             }
         ],
-        "name": "canUnstakeAny",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "user",
-                "type": "address"
-            }
-        ],
         "name": "checkRemainingTime",
         "outputs": [
             {
@@ -239,6 +303,26 @@
             }
         ],
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "emergencyWithdrawLpTokens",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bool",
+                "name": "state",
+                "type": "bool"
+            }
+        ],
+        "name": "enableDeposits",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -289,7 +373,7 @@
                         "type": "uint256"
                     }
                 ],
-                "internalType": "struct Staking.Stake[]",
+                "internalType": "struct LinqBasicLpStaking.Stake[]",
                 "name": "stakes",
                 "type": "tuple[]"
             }
@@ -300,6 +384,25 @@
     {
         "inputs": [],
         "name": "getCurrentBlock",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "account",
+                "type": "address"
+            }
+        ],
+        "name": "getLpDepositsForUser",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -344,7 +447,7 @@
     },
     {
         "inputs": [],
-        "name": "lock_Period",
+        "name": "lock_var",
         "outputs": [
             {
                 "internalType": "uint256",
@@ -438,11 +541,37 @@
         "inputs": [
             {
                 "internalType": "uint256",
-                "name": "_time",
+                "name": "_blockPerMinute",
                 "type": "uint256"
             }
         ],
-        "name": "updateLocktime",
+        "name": "updateBlockPerMinutes",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_rewardperBlock",
+                "type": "uint256"
+            }
+        ],
+        "name": "updateRewards",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "newLockPeriodInMinutes",
+                "type": "uint256"
+            }
+        ],
+        "name": "updatelockPeriod",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"

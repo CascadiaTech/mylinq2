@@ -13,8 +13,8 @@ import Web3 from "web3";
 import { ethers } from "ethers";
 import BigNumber from "bignumber.js";
 
-const fourteenDayContractAddress = "0xb15DDdd9aebd45013dB09246f8E5F2291DDe011E";
-const LPtokenContract = "0xC6429771C0a22e12b6A1733f80FF9Ae58465D45c";
+const fourteenDayContractAddress = "0x7A8D1608327EdBdD5C4f1367fD6dD031F21AD7eb";
+const LPtokenContract = "0xA8A837E2bf0c37fEf5C495951a0DFc33aaEAD57A";
 
 const OverviewComponent = () => {
   const { account } = useWeb3React();
@@ -127,7 +127,7 @@ const OverviewComponent = () => {
         signer
       );
 
-      const unstacked = await fourteenDayContract.unstake(account); //.claim()
+      const unstacked = await fourteenDayContract.unstake(); //.claim()
       const signtransaction = await signer.signTransaction(unstacked);
       console.log(signer, "signerr", unstacked);
       Swal.fire({
@@ -171,7 +171,7 @@ const OverviewComponent = () => {
         signer
       );
 
-      const rewards = await fourteenDayContract.withdrawReward(account); //.claim()
+      const rewards = await fourteenDayContract.withdrawReward(); //.claim()
       const signtransaction = await signer.signTransaction(rewards);
       console.log(signer, "signerr", rewards);
       Swal.fire({
@@ -222,7 +222,7 @@ const OverviewComponent = () => {
       <div className="flex flex-col items-center border border-gray-300 p-4 md:p-6 rounded-lg">
         <p className="text-xl font-semibold mb-2">Available Rewards:</p>
         <p className="text-xl font-semibold border-[1px] text-center border-black rounded-md px-2 md:px-4 py-1 w-36">
-          {rewards}
+          {rewards?Web3.utils.fromWei(rewards.toString(), 'ether'):0}
         </p>
         <button
           type="button"
@@ -254,7 +254,7 @@ const OverviewComponent = () => {
         </p>
         <button
           type="button"
-          onClick={withdraw}
+          onClick={unstake}
           disabled={!unstakeStatus}
           className={`rounded-lg ${
             !unstakeStatus
@@ -298,7 +298,7 @@ const StackComponent = () => {
       const userAddress = await signer.getAddress();
       const balance = await tokenContract.balanceOf(userAddress);
 
-      setMax(balance.toString());
+      setMax( Web3.utils.fromWei(balance.toString(), 'ether'));
     }
     if (!account) {
       // Swal.fire({
@@ -378,20 +378,24 @@ const StackComponent = () => {
   }
   return (
     <div style={{ fontFamily: "GroupeMedium" }} className="py-6 px-4 m-auto sm:p-10   w-[350px] sm:w-[350px] md:w-[550px] lg:w-[450px]   bg-white">
-      <div className="flex flex-col space-y-5">
+      <div className="flex flex-col ">
         <div className="relative   rounded-lg p-2">
+          <label htmlFor="stakeIpnut " className="text-sm">
+            Available Tokens : {max}
+          </label>
           <input
             type="text"
-            className="w-full border-0 outline-none p-2 pr-10 text-black"
+            id="stakeIpnut"
+            className="w-full border-0 outline-none p-2 pr-10 text-black "
             value={amount}
             max={10000}
             min={0}
-            style={{ fontFamily: "GroupeMedium" }}
+            style={{ fontFamily: "GroupeMedium", }}
             onChange={(e) => setAmount(e.target.value)}
           />
           <button
             onClick={handleMaxClick}
-            className="absolute top-1/2 transform -translate-y-1/2 w-[80px] h-[50px] right-2 bg-transparent border-0 outline-none bg-black text-white"
+            className="absolute top-[65px] transform -translate-y-1/2 w-[80px] h-[50px] right-2 bg-transparent border-0 outline-none bg-black text-white"
           >
             MAX
           </button>
