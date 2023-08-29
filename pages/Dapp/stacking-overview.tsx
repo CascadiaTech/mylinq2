@@ -25,7 +25,7 @@ const StackingOverview = () => {
     <div className="bg-white p-2 mt-11   rounded-xl text-center w-min md:justify-center lg:justify-center flex justify-center sm:justify-end justify-self-end text-black">
           <p className="text-xl font-bold mt-1">{account}</p>
         </div> 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 m-auto ">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4 m-auto">
         {/* <div className="bg-white p-2 mt-4 rounded-xl text-center w-full sm:w-[150px] flex items-end md:justify-center lg:justify-center   justify-center justify-self-end sm:justify-end text-black">
           <p className="text-xl font-bold mt-1">5,000,000</p>
         </div>
@@ -35,9 +35,9 @@ const StackingOverview = () => {
         <div className="w-full">
           <StackingCompnent />
         </div>
-        <div className="w-full">
+        {/* <div className="w-full">
           <PerpetualStacking />
-        </div>
+        </div> */}
       </div>
     </main>
   </>
