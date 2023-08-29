@@ -31,7 +31,7 @@ const Stacking = () => {
   
 useEffect(() => {
   if (account) {
-    router.push("/Dapp/stacking-overview");
+    router.push("/Dapp/staking-overview");
   }
 }, [account])
 
