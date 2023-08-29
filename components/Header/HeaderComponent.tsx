@@ -102,9 +102,9 @@ const projectId = 'e860804a2106941d3e0efee245ad7d7a';
                       style={{ fontFamily: "Azonix" }}>
                         <Link href={"/"}>LP Claim</Link>
                       </li>
-                      <li className="pt-1 hover:border-b-2 border-gray-300">
+                      {/* <li className="pt-1 hover:border-b-2 border-gray-300">
                         <Link href={"/Dapp/stackingPage"}>LP StaQing</Link>
-                      </li>
+                      </li> */}
                       <li className="pt-1 hover:border-b-2 border-gray-300 text-[16px]"
                       style={{ fontFamily: "Azonix" }}>
 
