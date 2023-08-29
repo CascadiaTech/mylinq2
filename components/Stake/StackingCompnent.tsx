@@ -424,7 +424,7 @@ const StackingCompnent = () => {
           className="text-black font-sans italic flex justify-center text-center items-center text-[30px]"
           style={{ fontFamily: "GroupeMedium" }}
         >
-          14 Days Staking
+          14 Day Staking
         </h1>
         <div className="flex flex-col md:flex-row lg:flex-row md:justify-between lg:justify-between font-sans text-black border-b-[1px] pb-3 border-gray-500 mt-5 mb-5"></div>
         <div className="flex justify-center items-center">
@@ -438,7 +438,7 @@ const StackingCompnent = () => {
             type="button"
             onClick={() => handleStepChange("overview")}
           >
-            Over view
+            Overview
           </button>
           <button
             style={{ fontFamily: "GroupeMedium" }}
