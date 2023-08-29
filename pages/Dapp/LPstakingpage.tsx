@@ -16,7 +16,7 @@ import { ConnectWallet } from "../../components/Web3Modal/WalletConnect";
 import Image from "next/image";
 import StackingCompnent from "../../components/Stake/StackingCompnent";
 import { useRouter } from "next/router";
-import StackingOverview from "./stacking-overview";
+import StackingOverview from "./staking-overview";
 import { useWeb3React } from "@web3-react/core";
 
 const Stacking = () => {
