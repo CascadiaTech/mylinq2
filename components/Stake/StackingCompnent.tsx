@@ -93,7 +93,7 @@ const OverviewComponent = () => {
     };
 
     
-    async function rewards() {
+     async function rewards() {
       try {
         setLoading(true);
         const abi = fourteenDayStackAbi;
@@ -103,14 +103,16 @@ const OverviewComponent = () => {
         const contractaddress = fourteenDayContractAddress; // "clienttokenaddress"
         const contract = new Contract(contractaddress, abi, provider);
         const Reflections = await contract.calculateRewardSinceLastClaim(account); //.claim()
-        const finalnumber = Web3.utils.fromWei(Reflections.toString());
-        setnewRewards(finalnumber);
+    
+        const finalnumber = parseFloat(Web3.utils.fromWei(Reflections.toString()));
+        const formattedNumber = finalnumber.toFixed(4);
+          const NumberNum = Number(formattedNumber)
+        setnewRewards(NumberNum);
         console.log(Reflections);
         console.log(finalnumber);
         return finalnumber;
       } catch (error) {
         console.log(error, "error 2");
-        setLoading(false);
       } finally {
         setLoading(false);
       }
