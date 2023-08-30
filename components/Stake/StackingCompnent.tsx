@@ -224,7 +224,7 @@ const OverviewComponent = () => {
         <button
           type="button"
           onClick={withdraw}
-          disabled={rewards === 0}
+          disabled={newrewards === 0}
           className={`rounded-lg ${
             rewards === 0
               ? "bg-gray-400 cursor-not-allowed"
