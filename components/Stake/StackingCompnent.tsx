@@ -23,6 +23,8 @@ const OverviewComponent = () => {
   const [loading, setLoading] = useState(false);
   const [unstakeStatus, setUnstakeStatus] = useState(false);
   const [rewards, setRewards] = useState(0);
+
+  const [newrewards, setnewRewards] = useState(Number);
   const user = account;
 
   const unstackStatus = async () => {
