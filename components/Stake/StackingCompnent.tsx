@@ -64,22 +64,23 @@ const OverviewComponent = () => {
     }
   };
   useEffect(() => {
-    const fetchRewards = async () => {
+    const fetchRewards = async (account: string) => {
       try {
         setLoading(true);
         const provider = new Web3Provider(
           library?.provider as ExternalProvider | JsonRpcFetchFunc
         );
         const signer = provider.getSigner();
-        const data = fourteenDayStackAbi;
-        const abi = data;
         const fourteenDayContract = new Contract(
           fourteenDayContractAddress,
-          abi,
+          fourteenDayStackAbi,
           signer
         );
-        const calculatedRewards =
-          await fourteenDayContract.calculateRewardSinceLastClaim(account);
+  
+        const calculatedRewards = await fourteenDayContract.calculateRewardSinceLastClaim(
+          account
+        );
+        console.log(calculatedRewards, "Claimable Reward");
         setRewards(calculatedRewards.toNumber());
       } catch (error) {
         console.log(error);
@@ -88,7 +89,7 @@ const OverviewComponent = () => {
         setLoading(false);
       }
     };
-    fetchRewards();
+    fetchRewards(account);
   }, [account, library]);
 
   const unstake = async () => {
