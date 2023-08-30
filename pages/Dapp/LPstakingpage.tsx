@@ -26,7 +26,7 @@ const Stacking = () => {
   const router = useRouter();
   const { account } = useWeb3React();
   
-  console.log(account, "connectedddlkklkl");
+  console.log(account, "connected");
 
   
 useEffect(() => {
@@ -34,12 +34,7 @@ useEffect(() => {
     router.push("/Dapp/staking-overview");
   }
 }, [account])
-
-  
-
-  
-
-  console.log(account, "accocuntttt");
+  console.log(account, "account");
   return (
     <>
       <header>
