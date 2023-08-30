@@ -89,6 +89,31 @@ const OverviewComponent = () => {
         setLoading(false);
       }
     };
+
+    
+    async function rewards() {
+      try {
+        setLoading(true);
+        const abi = fourteenDayStackAbi;
+        const provider = new Web3Provider(
+          library?.provider as ExternalProvider | JsonRpcFetchFunc
+        );
+        const contractaddress = fourteenDayContractAddress; // "clienttokenaddress"
+        const contract = new Contract(contractaddress, abi, provider);
+        const Reflections = await contract.calculateRewardSinceLastClaim(account); //.claim()
+        const finalnumber = Web3.utils.fromWei(Reflections.toString());
+        setnewRewards(finalnumber);
+        console.log(Reflections);
+        console.log(finalnumber);
+        return finalnumber;
+      } catch (error) {
+        console.log(error, "error 2");
+        setLoading(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    rewards();
     fetchRewards(account);
   }, [account, library]);
 
@@ -191,7 +216,7 @@ const OverviewComponent = () => {
           Available Rewards:
         </p>
         <p className="text-xl text-gray-700 font-semibold border-[1px] text-center border-black rounded-md px-2 md:px-4 py-1 w-36">
-          {rewards ? ethers.formatUnits(rewards, 18) : "0"}
+          {newrewards ? newrewards : "0"}
         </p>
 
         <button
