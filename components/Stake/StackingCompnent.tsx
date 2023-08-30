@@ -147,8 +147,7 @@ const OverviewComponent = () => {
       console.log(signer, "signer", unstacked);
       Swal.fire({
         icon: "success",
-        title: "Congratulations you have unstake all your assets",
-        text: "Go see them in your wallet",
+        title: "Congratulations you have unstaked all your assets",
       });
       return signtransaction;
     } catch (error) {
@@ -191,7 +190,7 @@ const OverviewComponent = () => {
       console.log(signer, "signer", rewards);
       Swal.fire({
         icon: "success",
-        title: "Congratulations you have Collected the rewards",
+        title: "Congratulations you have Collected your LP Rewards",
         text: "Go see them in your wallet",
       });
       return signtransaction;
@@ -358,8 +357,7 @@ const StackComponent = () => {
       console.log(signer, "signerr", stacked);
       Swal.fire({
         icon: "success",
-        title: "Congratulations you have Claimed all of your rewards",
-        text: "Go see them in your wallet, and stick around for the next drop",
+        title: "Congratulations you have Staked your LP",
       });
       // return signtransaction;
     } catch (error) {
