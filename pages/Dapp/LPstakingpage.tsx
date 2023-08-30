@@ -35,7 +35,7 @@ useEffect(() => {
   }
 }, [account])
   console.log(account, "account");
-  return (
+return (
     <>
       <header>
         {" "}
@@ -44,12 +44,12 @@ useEffect(() => {
       <main className={`${styles.main} `}>
         {/* <div className="mt-12 w-[170px] sm:w-[300px] md:w-[350px] lg:w-[500px] "> */}
         <div className=" flex flex-col justify-center items-center w-[350px] sm:w-[350px] md:w-[550px] lg:w-[650px]  ">
-          <div className="flex justify-center items-center self-center mt-8 sm:mt-[-5px] md:mt-0 lg:mt-0">
+          <div className="flex justify-center -mt-40 items-center self-center">
             <Image
               src={logoImage}
               alt="Logo"
-              width={300} // Set the desired width
-              height={300} // Set the desired height
+              width={300} 
+              height={300}
               className="self-center  "
             />
           </div>
@@ -57,12 +57,11 @@ useEffect(() => {
           {loading ? (
             <Spin indicator={antIcon} className="add-spinner" />
           ) : (
-            <div className="flex justify-center items-center  lg:mt-5">
+            <div className="flex justify-center my-4 items-center">
               <ConnectWallet />
             </div>
           )}
-        </div>
-        <div className="flex justify-center items-center mt-10 space-x-10">
+        <div className="flex flex-row mb-5 justify-center items-center space-x-10">
           <a
             href="https://youtube.com/@LINQGROUP?si=f_3whNeXvi20t9Ux"
             target="_blank"
@@ -90,6 +89,7 @@ useEffect(() => {
               height={22}
             />
           </a>
+        </div>
         </div>
       </main>
     </>
