@@ -23,6 +23,7 @@ const OverviewComponent = () => {
   const [loading, setLoading] = useState(false);
   const [unstakeStatus, setUnstakeStatus] = useState(false);
   const [rewards, setRewards] = useState(0);
+  const user = account;
 
   const unstackStatus = async () => {
     if (!account) {
@@ -47,7 +48,7 @@ const OverviewComponent = () => {
       console.log(fourteenDayContract);
 
       const stacked = await fourteenDayContract.canUnstakeAny(account); //.claim()
-      console.log(stacked, "STACKEDDDD");
+      console.log(stacked, "STAKED");
       return stacked;
     } catch (error) {
       console.log(error);
@@ -62,49 +63,33 @@ const OverviewComponent = () => {
       setLoading(false);
     }
   };
-
-  const calculateRewards = async () => {
-    if (!account) {
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Connect Your Wallet To Claim",
-      //   timer: 5000,
-      // });
-    }
-
-    try {
-      setLoading(true);
-      const provider = new Web3Provider(
-        library?.provider as ExternalProvider | JsonRpcFetchFunc
-      );
-      const signer = provider.getSigner();
-      const fourteenDayContract = new Contract(
-        fourteenDayContractAddress,
-        fourteenDayStackAbi,
-        signer
-      );
-      console.log(fourteenDayContract);
-
-      const rewards = await fourteenDayContract.calculateRewardSinceLastClaim(
-        account
-      ); //.claim()
-      console.log(rewards,"CLAIMMMMM")
-      //       const bigNumber = new BigNumber(rewards); // Replace with your BigNumber instance
-      // const normalNumber = bigNumber;
-      return rewards.toNumber();
-    } catch (error) {
-      console.log(error);
-      // Swal.fire({
-      //   icon: "error",
-      //   title: "Error",
-      //   //@ts-ignore
-      //   text: `${error.message.split(";")[0]}`,
-      //   // timer: 5000,
-      // });
-    } finally {
-      setLoading(false);
-    }
-  };
+  useEffect(() => {
+    const fetchRewards = async () => {
+      try {
+        setLoading(true);
+        const provider = new Web3Provider(
+          library?.provider as ExternalProvider | JsonRpcFetchFunc
+        );
+        const signer = provider.getSigner();
+        const data = fourteenDayStackAbi;
+        const abi = data;
+        const fourteenDayContract = new Contract(
+          fourteenDayContractAddress,
+          abi,
+          signer
+        );
+        const calculatedRewards =
+          await fourteenDayContract.calculateRewardSinceLastClaim(account);
+        setRewards(calculatedRewards.toNumber());
+      } catch (error) {
+        console.log(error);
+        // Handle errors
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchRewards();
+  }, [account, library]);
 
   const unstake = async () => {
     if (!account) {
@@ -129,7 +114,7 @@ const OverviewComponent = () => {
 
       const unstacked = await fourteenDayContract.unstake(); //.claim()
       const signtransaction = await signer.signTransaction(unstacked);
-      console.log(signer, "signerr", unstacked);
+      console.log(signer, "signer", unstacked);
       Swal.fire({
         icon: "success",
         title: "Congratulations you have unstake all your assets",
@@ -173,7 +158,7 @@ const OverviewComponent = () => {
 
       const rewards = await fourteenDayContract.withdrawReward(); //.claim()
       const signtransaction = await signer.signTransaction(rewards);
-      console.log(signer, "signerr", rewards);
+      console.log(signer, "signer", rewards);
       Swal.fire({
         icon: "success",
         title: "Congratulations you have Collected the rewards",
@@ -194,49 +179,33 @@ const OverviewComponent = () => {
     }
   };
 
-  useEffect(() => {
-    // Set up an interval to call the function every 5 seconds
-  
-    const intervalId = setInterval(async () => {
-      console.log(account,"ACCOUNNTTNT",rewards)
-
-      if(account){
-        const status = await unstackStatus();
-        const rewards = await calculateRewards();
-        console.log(rewards,"ASASASasd",status)
-        setRewards(rewards);
-        setUnstakeStatus(status);
-      }
-     
-    }, 5000); // 5000 milliseconds = 5 seconds
-
-    // Clean up the interval when the component unmounts
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, []);
-
   return (
-    <div style={{ fontFamily: "GroupeMedium" }} className="grid grid-cols-1 gap-6 md:grid-cols-2">
+    <div
+      style={{ fontFamily: "GroupeMedium" }}
+      className="grid grid-cols-1 gap-6 md:grid-cols-2"
+    >
       {/* Rewards Section */}
       <div className="flex flex-col items-center border border-gray-300 p-4 md:p-6 rounded-lg">
-        <p className="text-xl text-gray-700 font-semibold mb-2">Available Rewards:</p>
-        <p className="text-xl text-gray-700 font-semibold border-[1px] text-center border-black rounded-md px-2 md:px-4 py-1 w-36">
-          {rewards?Web3.utils.fromWei(rewards.toString(), 'ether'):0}
+        <p className="text-xl text-gray-700 font-semibold mb-2">
+          Available Rewards:
         </p>
+        <p className="text-xl text-gray-700 font-semibold border-[1px] text-center border-black rounded-md px-2 md:px-4 py-1 w-36">
+          {rewards ? ethers.formatUnits(rewards, 18) : "0"}
+        </p>
+
         <button
           type="button"
           onClick={withdraw}
-          disabled={rewards===0}
+          disabled={rewards === 0}
           className={`rounded-lg ${
-            rewards===0
+            rewards === 0
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-gradient-to-r from-slate-900 to-black"
           } text-gray-400 focus:ring-4 focus:ring-blue-300 mt-3 md:mt-4 text-md px-2 py-2`}
         >
           <p
             className={`cursor-pointer block text-sm sm:text-base text-center ${
-              rewards===0 ? "text-gray-600" : "text-gray-400"
+              rewards === 0 ? "text-gray-600" : "text-gray-400"
             } rounded`}
             style={{ fontFamily: "GroupeMedium" }}
           >
@@ -298,7 +267,7 @@ const StackComponent = () => {
       const userAddress = await signer.getAddress();
       const balance = await tokenContract.balanceOf(userAddress);
 
-      setMax( Web3.utils.fromWei(balance.toString(), 'ether'));
+      setMax(Web3.utils.fromWei(balance.toString(), "ether"));
     }
     if (!account) {
       // Swal.fire({
@@ -344,7 +313,7 @@ const StackComponent = () => {
         Web3.utils.toWei(amount)
       ); //.claim()
       await lpApproval.wait();
-      console.log(lpApproval,"APPROVAL",Web3.utils.toWei(amount));
+      console.log(lpApproval, "APPROVAL", Web3.utils.toWei(amount));
 
       const fourteenDayContract = new Contract(
         fourteenDayContractAddress,
@@ -353,7 +322,7 @@ const StackComponent = () => {
       );
       console.log(fourteenDayContract);
 
-      const newAmount=Web3.utils.toWei(amount)
+      const newAmount = Web3.utils.toWei(amount);
       const stacked = await fourteenDayContract.stake(newAmount); //.claim()
       // const signtransaction = await signer.signTransaction(stacked);
       console.log(signer, "signerr", stacked);
@@ -375,9 +344,12 @@ const StackComponent = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
   return (
-    <div style={{ fontFamily: "GroupeMedium" }} className="py-6 px-4 m-auto sm:p-10   w-[350px] sm:w-[350px] md:w-[550px] lg:w-[450px]   bg-white">
+    <div
+      style={{ fontFamily: "GroupeMedium" }}
+      className="py-6 px-4 m-auto sm:p-10   w-[350px] sm:w-[350px] md:w-[550px] lg:w-[450px]   bg-white"
+    >
       <div className="flex flex-col ">
         <div className="relative   rounded-lg p-2">
           <label htmlFor="stakeIpnut " className="text-sm">
@@ -390,7 +362,7 @@ const StackComponent = () => {
             value={amount}
             max={10000}
             min={0}
-            style={{ fontFamily: "GroupeMedium", }}
+            style={{ fontFamily: "GroupeMedium" }}
             onChange={(e) => setAmount(e.target.value)}
           />
           <button
@@ -418,7 +390,7 @@ const StackComponent = () => {
 
 const StackingCompnent = () => {
   const [activeStep, setActiveStep] = useState("overview");
-//@ts-ignore
+  //@ts-ignore
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
@@ -469,3 +441,4 @@ const StackingCompnent = () => {
 };
 
 export default StackingCompnent;
+
