@@ -232,11 +232,11 @@ const OverviewComponent = () => {
             rewards===0
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-gradient-to-r from-slate-900 to-black"
-          } text-white focus:ring-4 focus:ring-blue-300 mt-3 md:mt-4 text-md px-2 py-2`}
+          } text-gray-400 focus:ring-4 focus:ring-blue-300 mt-3 md:mt-4 text-md px-2 py-2`}
         >
           <p
             className={`cursor-pointer block text-sm sm:text-base text-center ${
-              rewards===0 ? "text-gray-600" : "text-white"
+              rewards===0 ? "text-gray-600" : "text-gray-400"
             } rounded`}
             style={{ fontFamily: "GroupeMedium" }}
           >
@@ -260,11 +260,11 @@ const OverviewComponent = () => {
             !unstakeStatus
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-gradient-to-r from-slate-900 to-black"
-          } text-white focus:ring-4 focus:ring-blue-300 mt-3 md:mt-4 text-md px-2 py-2`}
+          } text-gray-400 focus:ring-4 focus:ring-blue-300 mt-3 md:mt-4 text-md px-2 py-2`}
         >
           <p
             className={`cursor-pointer block text-sm sm:text-base text-center ${
-              !unstakeStatus ? "text-gray-600" : "text-white"
+              !unstakeStatus ? "text-gray-600" : "text-gray-400"
             } rounded`}
             style={{ fontFamily: "GroupeMedium" }}
           >
