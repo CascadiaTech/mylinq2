@@ -152,7 +152,7 @@ export const ConnectWallet = () => {
             <Modal.Body>
               <div className="p-6">
                 <p className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                  Connect with one of our available wallet providersss.
+                  Connect with one of our available wallet providers.
                 </p>
                 <ul className="my-4 space-y-3">
                   {isMobile ? (

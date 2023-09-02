@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import logoImage from "../../assets/images/q.png";
 import discordIcon from "../../assets/images/telegram2.png";
-
 import "tailwindcss-elevation";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import { ConnectWallet } from "../../components/Web3Modal/WalletConnect";

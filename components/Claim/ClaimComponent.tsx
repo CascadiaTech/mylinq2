@@ -72,14 +72,17 @@ export default function ClaimComponent() {
         const contract = new Contract(contractaddress, abi, provider);
         const Reflections = await contract.withdrawableDividendOf(account); //.claim()
         const finalnumber = Web3.utils.fromWei(Reflections.toString());
-        setpendingreflections(finalnumber);
+        const fixedNumber = parseFloat(finalnumber).toFixed(6);
+        const NumberNum = Number(fixedNumber)
+
+        setpendingreflections(NumberNum);
 
         if (finalnumber > 0) {
           setClaimable(true);
         }
-        console.log(Reflections);
+        console.log(NumberNum);
         console.log(finalnumber);
-        return finalnumber;
+        return NumberNum;
       } catch (error) {
         console.log(error, "error 2");
         setLoading(false);
@@ -100,10 +103,11 @@ export default function ClaimComponent() {
         const rewardToken = "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6";
         const Reflections = await contract.getTotalDividendsDistributed();
         const formattedDistributed = Web3.utils.fromWei(Reflections.toString());
-        settotaldistributed(formattedDistributed);
+        const fixedNumber = parseFloat(formattedDistributed).toFixed(6);
+        const NumberNum = Number(fixedNumber)
+        settotaldistributed(NumberNum);
         console.log(formattedDistributed);
-
-        return formattedDistributed;
+        return NumberNum;
       } catch (error) {
         console.log(error, "error 3");
         setLoading(false);
