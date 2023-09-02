@@ -196,13 +196,6 @@ const OverviewComponent = () => {
       return signtransaction;
     } catch (error) {
       console.log(error);
-      Swal.fire({
-        icon: "error",
-        title: "Error",
-        //@ts-ignore
-        text: `${error.message.split(";")[0]}`,
-        timer: 5000,
-      });
     } finally {
       setLoading(false);
     }
